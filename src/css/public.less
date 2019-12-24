@@ -1,0 +1,149 @@
+@import './colorCommon.less';
+@import '../assets/iconfont/iconfont.css';
+body{
+  overflow-x: hidden;
+}
+*{
+  // border:1px solid red;
+  padding:0;
+  margin:0;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+a{
+  cursor: pointer;
+  color:@color-main;
+}
+// 封装公共样式
+.fl{
+  float:left;
+}
+.fr{
+  float:right;
+}
+.text-c{
+  text-align: center;
+}
+.text-l{
+  text-align: left;
+}
+.text-r{
+  text-align: right;
+}
+.font-weight{
+  font-weight: bolder;
+}
+li{
+  list-style: none;
+  float:left;
+}
+.clearfix:after{
+  clear:both;
+  content:'';
+  display: block;
+}
+.text-center {
+  text-align: center;
+}
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+} 
+.text-overflow {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.text-white{
+  color:@text-white;
+}
+.bg-black{
+  background:@color-main;
+}
+.bg-white{
+  background: @text-white;
+}
+.text-red{
+  color:#fc166a;
+}
+// 激活的红色
+.text-white{
+  color:#fff;
+}
+.bg-active{
+  background: @text-active;
+}
+// 5 10 15 20 25 30 35 40 45 50
+.distance-aa(10,1);
+.distance-aa(@count,@i: 1,@dis:5 * @i) when (@i<=@count){
+  .padding-@{dis}{
+      padding:@i * 5px;
+  }
+  .padding-l-@{dis}{
+      padding-left:@i * 5px;
+  }
+  .padding-r-@{dis}{
+      padding-right:@i * 5px;
+  }
+  .padding-t-@{dis}{
+      padding-top:@i * 5px;
+  }
+  .padding-b-@{dis}{
+      padding-bottom:@i * 5px;
+  }
+  .padding-lr-@{dis}{
+      padding:0  @i * 5px;
+  }
+  .padding-tb-@{dis}{
+      padding:@i * 5px 0;
+  }
+  .margin-@{dis}{
+      margin:@i * 5px;
+  }
+  .margin-l-@{dis}{
+      margin-left:@i * 5px;
+  }
+  .margin-r-@{dis}{
+      margin-right:@i * 5px;
+  }
+  .margin-t-@{dis}{
+      margin-top:@i * 5px;
+  }
+  .margin-b-@{dis}{
+      margin-bottom:@i * 5px;
+  }
+  .margin-lr-@{dis}{
+      margin:0  @i * 5px;
+  }
+  .margin-tb-@{dis}{
+      margin:@i * 5px 0;
+  }
+  .distance-aa(@count,(@i+1))
+}
+//字体 12 14 16 18 20 22 24 26 28 30
+.font-size(15,6);
+.font-size(@font,@n,@size:2* @n) when (@n <= @font){
+  .font-@{size} {
+      font-size: @size *1px;
+  }
+  .font-size(@font,@n+1)
+}
+.text-active{
+  color: @text-active;
+}
+.text-black{
+  color: @text-black;
+}
+.text-gray{
+  color: @text-gray;
+}
+.skin-box {
+  width: 100%;
+  height: 100%;
+  img{
+      width: 100%;
+      height: 100%;
+  }
+}
