@@ -1,4 +1,160 @@
 .longran-Bottom{
-    height:50px;
-    background: blueviolet;
+    background: #000; 
+
+}
+// 底部
+.bottom-skin{
+    background: #000000;
+    color:#fff;
+    text-align: center;
+    .Bottom-title{
+        padding-top:40px;
+    }
+    .bottom-lists{
+        padding:20px;
+        border-bottom: 1px solid #333;
+        font-size: 0;
+        .bottom-list{
+            display: inline-block;
+            width:25%;
+            font-size: 14PX;
+            .detaile{
+                color:#999;
+            }
+        }
+         @media (max-width: 1024px){
+            .bottom-list{
+                width: 50% !important;
+            }
+    }
+    }
+}
+.bottom-skin02{
+    background: #000000;
+    color:#fff;
+    padding: 50px 15px 50px 150px;
+    .bottom-detail-lists{
+        padding:20px 0;
+        color:#999;
+        font-size: 0;
+        .bottom-detail-list{
+            display: inline-block;
+            width:20%;
+            line-height: 24px;
+            font-size: 14px;
+            vertical-align: top;
+            text-align: left;
+        }
+    }
+    .bottom-Email{
+        color:#999;
+    }
+    .con-box{
+        border:1px solid #fff;
+        width:235px;
+        height:30px;
+        line-height: 30px;
+        input{
+            color:#fff;
+            height:22px;
+            outline: none;
+            width:80%;
+            background-color: transparent;
+            border-color:transparent;
+            border-right-color:white;
+            padding:4px 10px;
+        }
+    }
+}
+.bottom-skin03{
+    text-align: center;
+    display: none;
+    background: #000000;
+    color: white;
+    padding: 25px 0;
+    /deep/.el-collapse{
+        border:none;
+    }
+    /deep/.el-collapse-item__header{
+        display: inline-block;
+        border-bottom: 0;
+        background-color:#000000;
+        color: white;
+        height: 20px;
+        line-height: 20px;
+        padding-left: 10px;
+        .el-collapse-item__arrow{
+            margin: 0;
+        }
+    }
+    /deep/.el-collapse-item__wrap{
+        border-bottom: 0;
+        background-color:#000000;
+        .el-collapse-item__content{
+            color:#a3a3a3;
+            padding: 0;
+        }
+    }
+    p{
+        font-size: 13px;
+        height: 20px;
+        line-height: 20px;
+    }
+    .bottom-Email{
+        color:#999;
+    }
+    .con-box{
+        border:1px solid #fff;
+        width:235px;
+        height:30px;
+        line-height: 30px;
+        display: inline-block;
+        input[name='email']{
+            color:#fff;
+            height:22px;
+            outline: none;
+            width:80%;
+            background-color: transparent;
+            border-color:transparent;
+            border-right-color:white;
+            padding:4px 10px;
+        }
+    }
+}
+@media (max-width: 1024px){
+    .bottom-skin02{
+        display: none !important;
+    }
+    .bottom-skin03{
+        display: block !important;
+    }
+    .bottom-address{
+        span {
+            display: block;
+            margin: 0;
+        }
+    }
+}
+.text-white{
+    color:white;
+}
+.text-grey{
+    color:#ABABAB;
+}
+
+.zhengce-lists{
+    text-align: center;
+    margin:0 auto;
+}
+.zhengce-list{
+    display: inline-block;
+    padding:0 5px;
+    border-right:1px solid #ABABAB;
+}
+.botom-join{
+    width:94px;
+    height:94px;
+    text-align: center;
+    line-height: 94px;
+    border:1px solid #FFF;
 }

@@ -1,19 +1,60 @@
 .longran-Top{
     background:#000;
     .top-nav-lists{
+        width:69%;
+        display: inline-block;
         padding:0 10px;
         .top-nav-list{
-            position:absolute;
-            padding:10px 25px;
+            position: relative;
+            width: 10%;
+            text-align: center;
+            padding:10px 0;
+            &:hover:after{
+                border: 10px solid transparent;
+                position: absolute;
+                top: 39px;
+                left: 50%;
+                margin-left: -10px;
+                content: '';
+                border-top-color: #000;
+            }
         }
-        .top-nav-icon:after{
-            border:15px solid transparent;
-            position: absolute;
-            top:0;
-            left:0;
-            margin-left:-15px;
-            content: '';
-            border-top-color:#000;
+        
+    }
+    .top-nav-listright{
+        width:30%;
+        padding:0 30px;
+        display: inline-block;
+        .top-listsright-shop{
+            position: relative;
+            span{
+                position: absolute;
+                top:5px;
+                right:15px;
+                width:16px;
+                height:16px;
+                text-align: center;
+                line-height:15px;
+                border:1px solid red;
+                border-radius: 50%;
+                background: red;
+            }
+        }
+        li{
+            text-align: center;
+            position: relative;
+            width:20%;
+            font-size:16px;
+            padding:10px 0;
+            &:hover:after{
+                border: 10px solid transparent;
+                position: absolute;
+                top: 39px;
+                left: 50%;
+                margin-left: -10px;
+                content: '';
+                border-top-color: #000;
+            }
         }
     }
 }
