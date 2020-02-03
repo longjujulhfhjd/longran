@@ -3,7 +3,7 @@
         <Top></Top>
         <router-view></router-view>
         <Bottoms></Bottoms>
-        <Slide class="index-slide"></Slide>
+        <Slide></Slide>
     </div>
 </template>
 

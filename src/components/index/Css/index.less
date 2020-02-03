@@ -1,4 +1,212 @@
 .longran-Index{
-    height:80px;
-    background: yellow;
-}
+    /deep/ .el-carousel__indicators--outside button{
+        display: none;
+    }
+    .banner1 {
+        width: 100%;
+        margin: 0 auto;
+        /deep/.el-carousel__container{
+            height:600px;
+            .el-carousel__item img {
+                width: 100%;
+                height: 100%;
+            }   
+         }
+    }
+    .banner2{
+        width: 100%;
+        margin: 0 auto;
+        /deep/.el-carousel__container{
+            height: 500px;
+                .skin-content-box{
+                width: 100%;
+                height: 100%;
+                text-align: center;
+                img {
+                    width: 100%;
+                    height: 60%;
+                }
+                span {
+                    font-weight: bold;
+                    display: block;
+                    padding: 10px 0;
+                }
+                .skin-bto-hover{
+                padding: 10px 30px;
+                }
+            }
+        }
+    }
+    /*切换*/
+    .change-title-list {
+        line-height:50px;
+        border: 1px solid #f1f1f1;
+        border-right: 0;
+        width: 100%;
+    }
+    .change-list-padding{
+        width:100%;
+        height:173px;
+        padding-top:4px;
+    }
+    .change-title-list a{
+        display:inline-block;
+        width:253px;
+        text-align: center;
+    }
+    .tab-list{
+        display:none;
+    }
+    .change-lists{
+        position: relative;
+    }
+    .tab-changebox{
+        height:281px;
+        overflow: hidden;
+    }
+    .tab-cover{
+        position:absolute;
+        top:10%;
+        left:10%;
+        width:40px;
+        height:40px;
+        text-align: center;
+        line-height: 40px;
+        color: #fff;
+        border:1px solid #ff2d52;
+        border-radius: 50%;
+        background: #ff2d52;
+    }
+    .tab-list.active{
+        display: block;
+    }
+    .change-title-list a:hover:after,.change-title-list a.active:after{
+        content: '';
+        display:inline-block;
+        border:10px solid transparent;
+        border-bottom-color:#FF2D52;
+        position: absolute;
+        top:30px;
+        left:108px;
+    }
+    .change .change-title{
+        width:100%;
+        height:50px;
+        margin-left:0;
+        text-align: left;
+    }
+    .change-title-list a:hover,.change-title-list a.active{
+        color:#FF2D52;
+        cursor:pointer;
+        position: relative;
+        border:0;
+        border-bottom:1px solid #ff2d52;
+    }
+    .change .change-lists{
+        height:277px;
+        display: inline-block;
+        padding:20px ;
+        width: 20%;
+        border:1px solid #cccccc;
+        border-right:0;
+    }
+    .change .change-lists:last-child{
+        border-right:1px solid #cccccc;
+    }
+    .change .change-lists img{
+        width:100%;
+        height:85%;
+    }
+    .change{
+        margin-top:40px;
+    }
+    .seckill{
+        height:350px;
+    }
+    .seckill-list-box{
+        width:80%;
+    }
+    .seckill-lists{
+        width:100%;
+    }
+    .seckill-list{
+        float:left;
+        width:32.3%;
+        border: 1px solid #ccc;
+        padding:10px;
+        margin-left: 10px;
+        height:350px;
+        img{
+            width:100%;
+            height:70%;
+        }
+    }
+    .seckill-money{
+        font-size: 0;
+        border:1px solid #ff2d52;
+        height: 40px;
+        span{
+            width:49%;
+            text-align: center;
+            display: inline-block;
+            font-size: 14px;
+            list-style: 49px;
+            line-height: 40px;
+        }
+    }
+    .yuanjia{
+        position: relative;
+        background: #FF2D52;
+        height:99.99%;
+        
+    }
+    .xianjia{
+        height:100%;
+        background: #fff;
+        color:#666;
+        text-decoration: line-through;
+    }
+    .yuanjia:after{
+        display: block;
+        content: '';
+        clear: both;
+        top:0px;
+        position: absolute;
+        right:-40px;
+        border:20px solid transparent;
+        border-left-color:#ff2d52;
+    }
+    .seckill-time{
+        height:100%;
+        width:19%;
+        padding:20px;
+        padding-top:100px;
+        background: #ff2d52;
+    }
+
+    .time-down span{
+        background: #000;
+        padding:0 5px;
+        font-size: 16px;
+    }
+    // 卖家秀
+    .buy-show{
+        width:20%;
+       display: inline-block;
+        padding:5px;
+        img{
+            border:1px solid #ccc;
+            padding:5px;
+            height:300px;
+            width: 100%;
+        }
+    }
+    .join-us{
+        max-width: 1920px;
+        img{
+            width: 100%;
+            height:300px;
+        }
+    }
+    
+}   

@@ -14,6 +14,30 @@ a{
   cursor: pointer;
   color:@color-main;
 }
+/*超出隐藏*/
+.overflow{
+	overflow: hidden;
+	white-space: nowrap;
+}
+.overflows{
+	overflow: hidden;
+}
+.text-ellipsis{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.clearfix:after{
+  clear:both;
+  content:'';
+  display: block;
+}
+.margin-auto{
+  margin: 0 auto;
+}
+.color-white{
+  color:#fff;
+}
 // 封装公共样式
 .fl{
   float:left;
@@ -42,6 +66,9 @@ li{
   content:'';
   display: block;
 }
+.inline-block{
+  display: inline-block;
+}
 .text-center {
   text-align: center;
 }
@@ -51,6 +78,9 @@ li{
 .text-right {
   text-align: right;
 } 
+.text-through{
+  text-decoration: line-through;
+}
 .text-overflow {
   white-space: nowrap;
   overflow: hidden;
@@ -67,6 +97,18 @@ li{
 }
 .text-red{
   color:#fc166a;
+}
+.color-grey{
+  color:#ccc;
+}
+.color-black{
+  color:black;
+}
+.float-l{
+  float:left;
+}
+.float-r{
+  float:right;
 }
 // 激活的红色
 .text-white{

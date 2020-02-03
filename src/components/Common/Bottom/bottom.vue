@@ -2,7 +2,7 @@
     <div id="skin-Index-Bottom" class="longran-Bottom">
         <div class="bottom-skin">
             <div class="Bottom-title font-22">
-                龙然壁纸销售网站
+                龙冉壁纸销售网站
             </div>
             <ul class="bottom-lists clearfix">
                     <li class="bottom-list">
