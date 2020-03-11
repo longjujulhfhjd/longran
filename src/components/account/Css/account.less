@@ -1,10 +1,30 @@
 .longran-Account{
     padding:20px;
+    .account-list{
+        margin:20px;
+        .account-lists{
+            position: relative;
+            padding:10px 15px;
+            margin-right:10px;
+            background: #000;
+            color: #fff;
+            .select-icon{
+                // display: none;
+                position: absolute;
+                top:0;
+                right:0;
+            }
+        }
+        .account-lists:hover{
+            background: #D61B52;
+        }
+    }
     .cart-listsimg{
         float:left;
         width:100px;
         height:100px;
     }
+    
     .cart-title-list{
         display: inline-block;
         height:50px;
@@ -12,9 +32,44 @@
         width:14%;
         text-align: center;
     }
-    .cart-title-lists {
+    .cart-title-lists,.cart-lists{    
+        background: #fff9f5;
+    }
+
+    .cart-lists{
+        padding:10px;
+        float:none;
+        height:125px;
+        margin-top:20px;
+    }
+    .cart-listsimg{
+        float:left;
+        width:100px;
+        height:100px;
+    }
+    .cart-checkbox{
+        float:left;
+        margin-top:40px;
+    }
+    .cart-scale,.cart-price,.cart-name,.cart-total,.cart-handle,.cart-mount{
+        text-align: center;
+        width:14%;
+        margin-top:40px;
+        float:left;
+    }
+    .cart-img{
+        width:14%;
+        float:left;
+    }
+    .cart-allmount{
+        height:100px;
         margin-top:10px;
-        border-top:1px solid #e2e2e2;
-        padding-left:20px;
+        padding-top:30px;
+        background: #f7f7f7;
+    }
+    .cart-aplay{
+        display: inline-block;
+        height:40px;
+        line-height: 30px;
     }
 }
