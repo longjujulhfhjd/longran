@@ -1,8 +1,5 @@
 <template>
-    <div>
-        订单页
-        <router-view></router-view>
-    </div>
+    <div>待支付订单页面</div>
 </template>
 
 <script>

@@ -21,7 +21,7 @@
                 <span class="num">-</span>
                 <span class="padding-l-10  padding-r-10">1</span>
                 <span class="num">+</span>
-                <span class="margin-l-20 join-cart skin-bto-hover">加入购物车</span></p>
+                <router-link class="margin-l-20 join-cart skin-bto-hover text-decoration-none" to='/cart'> 加入购物车</router-link>
             <p class="detail-alear  margin-t-30 color-grey">增值保障<span class="padding-l-10 color-black"><img class="inline-block padding-r-5"  :src="baoxiu"/>终身保修</span></p>
             <p class="detail-alear  margin-t-30 color-grey">温馨提示,支持7天无理由退货</p>
         </div>

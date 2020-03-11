@@ -35,7 +35,6 @@ export default {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     margin: 0 auto;
-    height:2000px;
     max-width: 1920px;
 }
 div.v-modal{

@@ -22,42 +22,46 @@
                         <div class="chang-text font-14">
                             <div class="text-ellipsis font-16">推荐商品</div>
                             <div class="text-main font-22">¥88.88</div>
-                            <p class=" tab-cover">推</p>
+                            <p class=" tab-cover">热</p>
                         </div>
+                        <router-link  class="detail-btn font-16" to='/detail'> 商品详情</router-link>
                     </li>
                     <li class="change-lists ">
                         <img class="tab-img" :src="banner1" />
                         <div class="chang-text font-14">
                             <div class="text-ellipsis font-16">推荐商品</div>
                             <div class="text-main font-22">¥88.88</div>
-                            <p class=" tab-cover">推</p>
+                            <p class=" tab-cover">热</p>
                         </div>
+                        <router-link  class="detail-btn font-16" to='/detail'> 商品详情</router-link>
                     </li>
                     <li class="change-lists ">
                         <img class="tab-img" :src="banner1" />
                         <div class="chang-text font-14">
                             <div class="text-ellipsis font-16">推荐商品</div>
                             <div class="text-main font-22">¥88.88</div>
-                            <p class=" tab-cover">推</p>
+                            <p class=" tab-cover">热</p>
                         </div>
+                        <router-link  class="detail-btn font-16" to='/detail'> 商品详情</router-link>
                     </li>
                     <li class="change-lists ">
                         <img class="tab-img" :src="banner1" />
                         <div class="chang-text font-14">
                             <div class="text-ellipsis font-16">推荐商品</div>
                             <div class="text-main font-22">¥88.88</div>
-                            <p class=" tab-cover">推</p>
+                            <p class=" tab-cover">热</p>
                         </div>
+                        <router-link  class="detail-btn font-16" to='/detail'> 商品详情</router-link>
                     </li>
                     <li class="change-lists ">
                         <img class="tab-img" :src="banner1" />
                         <div class="chang-text font-14">
                             <div class="text-ellipsis font-16">推荐商品</div>
                             <div class="text-main font-22">¥88.88</div>
-                            <p class=" tab-cover">推</p>
+                            <p class=" tab-cover">热</p>
                         </div>
+                        <router-link  class="detail-btn font-16" to='/detail'> 商品详情</router-link>
                     </li>
-
                 </ul>
                 <!-- 新品推荐 -->
                 <ul class="change-list-padding tab-list tabul2 clearfix">
@@ -68,6 +72,7 @@
                             <div class="text-main font-22">¥88.88</div>
                              <p class=" tab-cover">新</p>
                         </div>
+                        <router-link  class="detail-btn font-16" to='/detail'> 商品详情</router-link>
                     </li>
                     <li class="change-lists float-l ">
                         <img class="" :src="banner2" />
@@ -76,6 +81,15 @@
                             <div class="text-main font-22">¥88.88</div>
                              <p class=" tab-cover">新</p>
                         </div>
+                        <router-link  class="detail-btn font-16" to='/detail'> 商品详情</router-link>                    </li>
+                    <li class="change-lists float-l ">
+                        <img class="" :src="banner2" />
+                        <div class="chang-text font-14">
+                            <div class="text-ellipsis font-16">新品推荐</div>
+                            <div class="text-main font-22">¥88.88</div>
+                             <p class=" tab-cover">新</p>
+                        </div>
+                        <router-link  class="detail-btn font-16" to='/detail'> 商品详情</router-link>
                     </li>
                     <li class="change-lists float-l ">
                         <img class="" :src="banner2" />
@@ -84,6 +98,7 @@
                             <div class="text-main font-22">¥88.88</div>
                              <p class=" tab-cover">新</p>
                         </div>
+                        <router-link  class="detail-btn font-16" to='/detail'> 商品详情</router-link>
                     </li>
                     <li class="change-lists float-l ">
                         <img class="" :src="banner2" />
@@ -92,14 +107,7 @@
                             <div class="text-main font-22">¥88.88</div>
                              <p class=" tab-cover">新</p>
                         </div>
-                    </li>
-                    <li class="change-lists float-l ">
-                        <img class="" :src="banner2" />
-                        <div class="chang-text font-14">
-                            <div class="text-ellipsis font-16">新品推荐</div>
-                            <div class="text-main font-22">¥88.88</div>
-                             <p class=" tab-cover">新</p>
-                        </div>
+                        <router-link  class="detail-btn font-16" to='/detail'> 商品详情</router-link>
                     </li>
                 </ul>
                 <!-- 活动商品 -->
@@ -109,48 +117,45 @@
                         <div class="chang-text font-14">
                             <div class="text-ellipsis font-16">活动商品</div>
                             <div class="text-main font-22">¥88.88</div>
-                            <p class=" tab-cover">活</p>
+                            <p class=" tab-cover">促</p>
                         </div>
+                        <router-link  class="detail-btn font-16" to='/detail'> 商品详情</router-link>
+                    </li>
+                   <li class="change-lists float-l ">
+                        <img class="" :src="banner3" />
+                        <div class="chang-text font-14">
+                            <div class="text-ellipsis font-16">活动商品</div>
+                            <div class="text-main font-22">¥88.88</div>
+                            <p class=" tab-cover">促</p>
+                        </div>
+                        <router-link  class="detail-btn font-16" to='/detail'> 商品详情</router-link>
                     </li>
                     <li class="change-lists float-l ">
                         <img class="" :src="banner3" />
                         <div class="chang-text font-14">
                             <div class="text-ellipsis font-16">活动商品</div>
                             <div class="text-main font-22">¥88.88</div>
-                            <p class=" tab-cover">活</p>
+                            <p class=" tab-cover">促</p>
                         </div>
+                        <router-link  class="detail-btn font-16" to='/detail'> 商品详情</router-link>
                     </li>
                     <li class="change-lists float-l ">
                         <img class="" :src="banner3" />
                         <div class="chang-text font-14">
                             <div class="text-ellipsis font-16">活动商品</div>
                             <div class="text-main font-22">¥88.88</div>
-                            <p class=" tab-cover">活</p>
+                            <p class=" tab-cover">促</p>
                         </div>
+                        <router-link  class="detail-btn font-16" to='/detail'> 商品详情</router-link>
                     </li>
                     <li class="change-lists float-l ">
                         <img class="" :src="banner3" />
                         <div class="chang-text font-14">
                             <div class="text-ellipsis font-16">活动商品</div>
                             <div class="text-main font-22">¥88.88</div>
-                            <p class=" tab-cover">活</p>
+                            <p class=" tab-cover">促</p>
                         </div>
-                    </li>
-                    <li class="change-lists float-l ">
-                        <img class="" :src="banner3" />
-                        <div class="chang-text font-14">
-                            <div class="text-ellipsis font-16">活动商品</div>
-                            <div class="text-main font-22">¥88.88</div>
-                            <p class=" tab-cover">活</p>
-                        </div>
-                    </li>
-                    <li class="change-lists float-l ">
-                        <img class="" :src="banner3" />
-                        <div class="chang-text font-14">
-                            <div class="text-ellipsis font-16">活动商品</div>
-                            <div class="text-main font-22">¥88.88</div>
-                            <p class=" tab-cover">活</p>
-                        </div>
+                        <router-link  class="detail-btn font-16" to='/detail'> 商品详情</router-link>
                     </li>
                 </ul>
             </div>
@@ -209,7 +214,7 @@
                         <img :src='item'/>
                         <p class="padding-t-10">无缝墙纸</p>
                         <p  class="padding-t-10">￥560元/平方米</p>
-                        <p  class="skin-bto margin-t-10">立即购买</p>
+                        <p  class="skin-bto-hover margin-t-10">立即购买</p>
                     </div>
                 </el-carousel-item>
             </el-carousel>
@@ -223,7 +228,7 @@
                         <img :src='item'/>
                         <p class="padding-t-10">无缝墙纸</p>
                         <p  class="padding-t-10">￥560元/平方米</p>
-                        <p  class="skin-bto margin-t-10">立即购买</p>
+                        <router-link class="skin-bto-hover margin-t-10" to='/detail'> 立即购买</router-link>
                     </div>
                 </el-carousel-item>
             </el-carousel>
@@ -237,7 +242,7 @@
                         <img :src='item'/>
                         <p class="padding-t-10">无缝墙纸</p>
                         <p  class="padding-t-10">￥560元/平方米</p>
-                        <p  class="skin-bto margin-t-10">立即购买</p>
+                        <p  class="skin-bto-hover margin-t-10">立即购买</p>
                     </div>
                 </el-carousel-item>
             </el-carousel>

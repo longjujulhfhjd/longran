@@ -7,7 +7,6 @@ import store from './store'
 import ElementUI from 'element-ui'
 import md5 from 'js-md5'
 import 'element-ui/lib/theme-chalk/index.css'
-// sduhf
 import './css/public.less'
 import './css/button.less'
 import Swiper from 'swiper'

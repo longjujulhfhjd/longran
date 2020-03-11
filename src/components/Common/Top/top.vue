@@ -2,7 +2,7 @@
     <div class="longran-Top text-white">
         <div class="top-logo text-c font-30  text-white padding-tb-20 ">LONGRAN</div>
         <ul class="top-nav-lists clearfix">
-            <router-link  class="top-nav-list text-white " to='/'>  <li class="top-nav-list text-white ">首页</li></router-link>
+            <router-link to='/'>  <li class="top-nav-list text-white ">首页</li></router-link>
             <li class="top-nav-list text-white ">墙衣</li>
             <li class="top-nav-list text-white ">墙纸</li>
             <li class="top-nav-list text-white ">墙布</li>
