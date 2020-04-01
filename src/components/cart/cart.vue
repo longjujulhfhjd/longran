@@ -35,7 +35,7 @@
                     <p class="cart-scale ">规格</p>
                     <p class="cart-price ">￥12</p>
                     <div class="cart-mount ">
-                        <el-input-number v-model="num1"  :min="1" :max="100" label="描述文字"></el-input-number>
+                        <el-input-number v-model="num1"  :min="1" :max="100" ></el-input-number>
                     </div>
                     <p class="cart-total ">￥12</p>
                     <p class="cart-handle  ">删除 购买 收藏</p>
@@ -47,7 +47,7 @@
                     <p>总价：<span class="font-18 text-red">￥139.00</span></p>
               </div>
               <div class="fl padding-l-20"  style="width:50%;">
-                  <router-link class=" cart-aplay skin-bto-hover text-decoration-none" to="/account">立即结算</router-link>
+                  <router-link class="cart-aplay skin-bto-hover text-decoration-none" to="/account">立即结算</router-link>
               </div>
             </div>
         </div>

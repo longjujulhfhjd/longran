@@ -205,6 +205,24 @@
                 </ul>
            </div>
         </div>
+        <!-- 店面咨询 -->
+        <p class="news-bigtitle margin-tb-30 font-18"><span class="icon-xinwen iconfont padding-r-10 font-20"></span> 新闻咨询</p>
+        <el-table
+            :data="tableData"
+            height="500"
+            style="width: 100%">
+             <el-table-column
+                class="news-title"
+                prop="title"
+                label="活动主题"
+                width="1000px">
+                </el-table-column>
+                <el-table-column
+                prop="date"
+                label="开始时间"
+                width="300px">
+                </el-table-column>
+        </el-table>
         <!-- 墙衣 -->
         <p class="font-36 text-c padding-tb-20">墙衣</p>
         <div class='banner2'>
@@ -227,6 +245,20 @@
                     <div class='skin-content-box'>
                         <img :src='item'/>
                         <p class="padding-t-10">无缝墙纸</p>
+                        <p  class="padding-t-10">￥560元/平方米</p>
+                        <router-link class="skin-bto-hover margin-t-10" to='/detail'> 立即购买</router-link>
+                    </div>
+                </el-carousel-item>
+            </el-carousel>
+        </div>
+          <!-- 墙画 -->
+        <p class="font-36 text-c padding-tb-20">墙画</p>
+        <div class='banner2'>
+            <el-carousel :interval="4000" type="card">
+                <el-carousel-item v-for="item in bannerImg" :key="item.g_id">
+                    <div class='skin-content-box'>
+                        <img :src='item'/>
+                        <p class="padding-t-10">无缝墙画</p>
                         <p  class="padding-t-10">￥560元/平方米</p>
                         <router-link class="skin-bto-hover margin-t-10" to='/detail'> 立即购买</router-link>
                     </div>
@@ -275,7 +307,41 @@ export default {
             banner1,
             banner2,
             banner3,
-            bannerImg: [banner1, banner2, banner3, banner4, banner5, banner6, banner7]
+            bannerImg: [banner1, banner2, banner3, banner4, banner5, banner6, banner7],
+            tableData: [{
+                date: '2016-05-03',
+                title: '上海市普陀区金沙江路 1518 弄'
+            }, {
+                date: '2016-05-02',
+                title: '上海市普陀区金沙江路 1518 弄'
+            }, {
+                date: '2016-05-04',
+                title: '上海市普陀区金沙江路 1518 弄'
+            }, {
+                date: '2016-05-01',
+                title: '上海市普陀区金沙江路 1518 弄'
+            }, {
+                date: '2016-05-08',
+                title: '上海市普陀区金沙江路 1518 弄'
+            }, {
+                date: '2016-05-02',
+                title: '上海市普陀区金沙江路 1518 弄'
+            }, {
+                date: '2016-05-04',
+                title: '上海市普陀区金沙江路 1518 弄'
+            }, {
+                date: '2016-05-01',
+                title: '上海市普陀区金沙江路 1518 弄'
+            }, {
+                date: '2016-05-08',
+                title: '上海市普陀区金沙江路 1518 弄'
+            }, {
+                date: '2016-05-06',
+                title: '上海市普陀区金沙江路 1518 弄'
+            }, {
+                date: '2016-05-07',
+                title: '上海市普陀区金沙江路 1518 弄'
+            }]
         }
     },
     mounted () {

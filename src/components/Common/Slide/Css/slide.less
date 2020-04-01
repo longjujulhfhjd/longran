@@ -2,31 +2,30 @@
     background:black;
     display: none;
     .slide-shopcon{
-        position: fixed;
-        top:20%;
-        bottom:0;
-        right:20px;
-        background: #fff;
         background: orange;
         color:#000;
         z-index:10002;
         display:none;
     }
     .slide-servicecon{
-        position: fixed;
-        top:20%;
-        bottom:0;
-        right:20px;
-        background: #fff;
         background: orange;
         color:#000;
         z-index:10002;
         display:none;
         width:300px;
     }
+    
     .slide-lists{
-        .slide-list{ 
-            z-index:10001;
+        width:50px;
+        position: fixed;
+        top:50%;
+        right:0;
+        text-align: center;
+        color:#fff;
+        z-index: 99999;
+        background: #000;
+        .slide-list{
+            margin-top:10px;
             padding:10px 10px;
             z-index:1;
             &:hover{
@@ -35,21 +34,72 @@
             }
         }
     }
-    // .slide-con{
-    //     width:300px;
-    //     bottom:0;
-    //     right:20px;
-    //     position: fixed;
-    //     background: greenyellow;
-    //     top:10%;
-    //     z-index:2;
-    //     // display: none;
-    //     .cart-con{
-    //         display: none;
-    //     }
-    //     .service-con{
-    //         display: none;
-    //     }
-    // }
+    
    
+}
+// 购物车
+.delete-slidecart:hover{
+    color:red;
+}
+.slide-cart-list{
+    height:500px;
+}
+.slide-cart-lists{
+    padding:10px;
+    border-top:1px solid #000;
+    float:none;
+    height:130px;
+}
+.slide-cart-img{
+    border:1px solid #000;
+    padding:5px;
+}
+.slide-cart-con{
+    padding-left:10px;
+}
+.slide-cart-title{
+    height:36px;
+    line-height: 36px;
+}
+// 客服
+.send-info{
+    background: #000;
+    height:80px;
+}
+.sever-input{
+    padding-left: 10px;
+    margin-top:30px;
+    height:26px;
+    line-height: 26px;
+    width:200px;
+    border-radius: 8px;
+    color:#000;
+    border-color:#000;
+}
+.server-send{
+    background-color: #fff;
+    color:#000;
+    border-radius: 15px;
+}
+.server-box{
+    margin:10px;
+    padding:20px;
+    border-radius: 10px;
+    border:1px solid #ccc;
+}
+.sever-img{
+    width:19%;
+    height:30px;
+    border-radius: 50%;
+    border:1px solid #000;
+}
+.server-con{
+    text-align: left;
+    line-height: 25px;
+    width:70%;
+    float:left;
+    margin-left: 20px;
+    padding:10px;
+    border:1px solid #000;
+    border-radius: 15px;
 }

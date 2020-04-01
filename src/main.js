@@ -8,9 +8,13 @@ import ElementUI from 'element-ui'
 import md5 from 'js-md5'
 import 'element-ui/lib/theme-chalk/index.css'
 import './css/public.less'
+import './css/common.less'
 import './css/button.less'
+import './css/font/iconfont.css'
 import Swiper from 'swiper'
 import 'swiper/css/swiper.min.css'
+import vRegion from 'v-region'
+Vue.use(vRegion)
 Vue.config.productionTip = false
 Vue.prototype.$md5 = md5
 Vue.use(ElementUI)

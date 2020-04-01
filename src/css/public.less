@@ -10,7 +10,11 @@ body{
   box-sizing: border-box;
   font-size: 14px;
 }
+:focus {
+	outline:none;  
+}
 a{
+  text-decoration: none;
   cursor: pointer;
   color:@color-main;
 }
@@ -26,6 +30,10 @@ a{
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
+}
+.text-ellipsiss{
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 .clearfix:after{
   clear:both;
@@ -80,7 +88,13 @@ li{
 }
 .text-right {
   text-align: right;
-} 
+}
+.text-orange{
+  color:orange;
+}
+.text-blue{
+  color:blue;
+}
 .text-through{
   text-decoration: line-through;
 }
@@ -88,6 +102,9 @@ li{
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.text-black{
+  color:#000;
 }
 .text-white{
   color:@text-white;
@@ -117,8 +134,20 @@ li{
 .text-white{
   color:#fff;
 }
+.text-blue{
+  color:blue;
+}
+.text-red{
+  color:red;
+}
+.text-weight{
+  font-weight: bolder;
+}
 .bg-active{
   background: @text-active;
+}
+.bg-red{
+  background:red;
 }
 // 5 10 15 20 25 30 35 40 45 50
 .distance-aa(10,1);

@@ -1,0 +1,148 @@
+// list-hope样式
+.listshop-lists{
+    margin-top:10px;
+    width:19%;
+    margin-left:5px;
+    border:1px solid #ccc;
+    position: relative;
+    height:280px;
+    display: relative;
+} 
+.listshop-image{
+        width:100%;
+        height:200px;
+}
+.list-cover{
+    display: none;
+    position: absolute;
+    top:0%;
+    width:100%;
+    height:100%;
+    background:#fff;
+    opacity: .5;
+}
+// .listshop-lists:hover .listshop-btn{
+//     display: block;
+// }
+.listshop-btn:hover{
+    background: #D61B52;
+    color:#fff;
+}
+.listshop-btn{
+    position: absolute;
+    display: none;
+    top:50%;
+    display: inline-block;
+    padding:5px 10px;
+    font-size: 12px;
+    background: #000;
+    color: #fff; 
+}
+.listshop-lists:hover .list-cover{
+    display: block;
+}
+.listshop-lists:hover .shoucang,.listshop-lists:hover .dianzan{
+    display: block;
+}
+.shoucang,.dianzan{
+    border:1px solid #000;
+    border-radius: 50%;
+    text-align: center;
+    padding:5px;
+    font-size:12px;
+}
+.shoucang:hover,.dianzan:hover {
+    color:#D61B52;
+    border-color:#D61B52;
+}
+.shoucang{
+    position: absolute;
+    top:20%;
+    right:5%;
+    font-size:20px;
+    display: none;
+}
+.listjoin-cart{
+    left:15%;
+    display:none;
+}
+.list-detail{
+    left:55%;
+    display:none;
+}
+.listshop-lists:hover .list-detail {
+    display:block;
+}
+.listshop-lists:hover .listjoin-cart ,.listshop-lists:hover  .list-cover{
+    display:block;
+}
+.dianzan{
+    position: absolute;
+    top:5%;
+    right:5%;
+    display: none;
+
+}
+
+
+
+
+// 搜索
+.input-search input{
+    height:50px;
+    border:0;
+    display: inline-block;
+}
+.input-search{
+    overflow: hidden;
+    width:800px;
+    border-radius: 8px;
+    border:1px solid #000;
+}
+.search-btn{
+    line-height: 50px;
+    display: inline-block;
+    background: #000;
+    color:#fff;
+    padding:0 25px;
+}
+.search-btn:hover{
+    background: #D61B52;
+}
+.xiantiao{
+    display: inline-block;
+    width:100%;
+    border:1px solid #D61B52;
+}
+.icontent{
+    position: absolute;
+    top:-3px;
+    left:45%;
+    background: #fff;
+    padding-right:10px;
+    padding-left:10px;
+}
+// 墙纸墙画墙衣
+.wallpaper-banner {
+    width: 100%;
+    margin: 0 auto;
+    /deep/.el-carousel__container{
+        height:600px;
+        .el-carousel__item img {
+            width: 100%;
+            height: 100%;
+        }   
+     }
+}
+.class-wallpaper{
+    width:94%;
+}
+.wallpaper-list{
+    width:5%;
+}
+.wallpaper-lists{
+    float:none;
+    padding:10px;
+    border:1px solid #ccc;
+    text-align:center;
+}

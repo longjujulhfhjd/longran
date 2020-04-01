@@ -76,7 +76,7 @@
         </div>
        <div class="text-r margin-t-20 margin-r-20">
             <router-link  class="skin-bto-hover text-decoration-none" to="/order/">确认支付</router-link>
-            <!-- <router-link  class="skin-bto-hover text-decoration-none" to="/order/unorder">取消订单</router-link> -->
+            <router-link  class="skin-bto-hover text-decoration-none" to="/order/unorder">取消订单</router-link>
        </div>
     </div>
 </template>

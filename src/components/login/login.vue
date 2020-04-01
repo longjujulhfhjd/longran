@@ -1,6 +1,6 @@
 <template>
     <div class="longran-Login">
-        <p class="font-28">登录</p>
+        <p class="font-28">登 录</p>
         <el-form class="login-style"  :rules="rules"  :label-position="labelPosition" label-width="80px" :model="loginForms">
             <el-form-item label="用户名" prop="email">
                 <el-input type="text" v-model="loginForms.email" :placeholder="email"></el-input>
@@ -18,8 +18,8 @@
                 忘记密码?
             </router-link>
         </div>
-        <router-link  class="skin-bto btn-reginster" to="/">
-                登录
+        <router-link  to="/">
+                <span  class="skin-bto btn-reginster">登录</span>
         </router-link>
          <router-link  class="skin-bto margin-l-20 btn-reginster" to="/register">
                 立即注册
