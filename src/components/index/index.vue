@@ -284,12 +284,6 @@
         <div v-for="item in bannerImg" :key="item" class="buy-show">
             <img :src='item'/>
         </div>
-        <!-- 加入我们 -->
-        <p class="font-36 text-c padding-tb-20">加入我们</p>
-        <div class="join-us">
-            <img :src="banner1"/>
-        </div>
-
     </div>
 </template>
 

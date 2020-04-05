@@ -1,6 +1,6 @@
 <template>
     <div>
-        <ul v-infinite-scroll="load"  class="listshop-list text-c clearfix" style="height:500px;overflow:auto">
+        <ul v-infinite-scroll  class="listshop-list text-c clearfix"  style="height:500px;overflow:auto">
             <li class="listshop-lists">
                 <img class="listshop-image padding-10" src='./image/wallcloth-4.jpg' />
                 <p class="margin-t-10 text-ellipsis padding-lr-10 padding-tb-5">商品名称商品名称商品名称商品名称商品名称</p>

@@ -77,7 +77,4 @@ export default {
 <style lang="less" scoped>
 @import './Css/cart.less';
 
-</style><style lang="less" scoped>
-@import './Css/cart.less';
-
 </style>

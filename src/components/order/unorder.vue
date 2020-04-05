@@ -1,6 +1,6 @@
 <template>
     <div class="longran-Unorder">
-         <div class="margin-t-10 margin-b-20 padding-10" style="border:1px solid #ccc;">
+         <div class="margin-t-10 margin-b-20 padding-10" style="border:1px solid #ccc;" v-infinite-scroll>
             <ul class="cart-title-lists clearfix">
                 <li class="cart-title-list">商品图片 </li>
                 <li class="cart-title-list">商品名称 </li>
@@ -18,7 +18,7 @@
                     <p class="cart-price ">￥12.00</p>
                     <p class="cart-mount">2</p>
                     <p class="cart-total text-red">￥24.00</p>
-                    <p class="cart-destory"><span class="cart-destory-btn">付款</span><span class="cart-destory-btn">取消</span> </p>
+                    <p class="cart-destory"><span class="cart-destory-btn">付款</span><span class="cart-destory-btn">删除订单</span> </p>
                 </li>
                 <li class="cart-lists">
                     <p class="cart-img"><img  class="margin-l-20 cart-listsimg margin-r-40" :src="banner1"/></p>
@@ -27,7 +27,10 @@
                     <p class="cart-price ">￥12.00</p>
                     <p class="cart-mount">2</p>
                     <p class="cart-total text-red">￥24.00</p>
-                    <p class="cart-destory"><span class="cart-destory-btn">付款</span><span class="cart-destory-btn">取消</span> </p>
+                    <p class="cart-destory" style="margin-top:10px;">
+                        <router-link to='/shopprogress/pay'> <span class="cart-destory-btn">付款</span> </router-link>
+                        <router-link to='/cart'> <span class="cart-destory-btn margin-t-10">删除订单</span> </router-link>
+                    </p>
                 </li>
              </ul>
         </div>

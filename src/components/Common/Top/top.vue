@@ -9,7 +9,7 @@
             <router-link to='/wallpaint'>  <li class="top-nav-list text-white ">墙画</li></router-link>
             <router-link to='/application'>  <li class="top-nav-list text-white ">招聘</li></router-link>
             <router-link to='/personCenter'>  <li class="top-nav-list text-white ">个人中心</li></router-link>
-            <router-link to='/aboutUs'>  <li class="top-nav-list text-white ">联系我们</li></router-link>
+            <router-link to='/aboutUs'>  <li class="top-nav-list text-white ">关于我们</li></router-link>
         </ul>
         <ul class="top-nav-listright">
             <router-link to='/search'> <li class="top-nav-listsright  text-white font-18 el-icon-search"></li> </router-link>

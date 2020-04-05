@@ -14,12 +14,100 @@
         <p class="font-18 padding-10 text-weight">工作地址</p>
         <p class="padding-10 padding-l-20 font-18 text-orange text-weight"><span class="el-icon-location-outline"></span>贵州省纳雍县阳光星城大唐果酒店上行30米</p>
         <img style="height:500px; width:700px;" src="./image/api.png"/>
+        <p class="padding-20">有意向的向我们预留个人联系，方便我们安排面试</p>
+        <el-form :rules="rules" :model="loginForms" label-width="80px">
+            <el-form-item label="邮箱"  prop="email">
+                <el-input type="text" v-model="loginForms.email" :placeholder="email" ></el-input>
+            </el-form-item>
+            <el-form-item label="电话号码"  prop="tel">
+                <el-input type="text" v-model="loginForms.tel" :placeholder="tel"></el-input>
+            </el-form-item>
+            <el-form-item label="工作情况"  prop="detail">
+                <el-input type="textarea" v-model="loginForms.detail" :placeholder="detail"></el-input>
+            </el-form-item>
+        </el-form>
+        <el-button class="skin-bto-hover margin-l-30" @click="open"> 提交 </el-button>
     </div>
 </template>
 
 <script>
+import {regEmail, regTel} from './js/reg.js'
 export default {
-
+    data () {
+        var Tel = (rule, value, callback) => {
+            if (!value) {
+                callback(new Error('请输入电话号码'))
+            } else if (!regTel.test(value)) {
+                callback(new Error('密码格式不正确'))
+            } else {
+                callback()
+            }
+        }
+        var Emali = (rule, value, callback) => {
+            if (!value) {
+                callback(new Error('请输入邮箱'))
+            } else if (!regEmail.test(value)) {
+                callback(new Error('邮箱格式不正确'))
+            } else {
+                callback()
+            }
+        }
+        var Detail = (rule, value, callback) => {
+            if (value === '') {
+                callback(new Error('该工作详情内容不能为空'))
+            } else {
+                callback()
+            }
+        }
+        return {
+            email: '请输入邮箱',
+            tel: '请输入你的电话号码',
+            detail: '请输入与该工作相关的近几年你的大体工作情况',
+            labelPosition: 'right',
+            loginForms: {
+                email: '',
+                tel: '',
+                detail: ''
+            },
+            rules: {
+                email: [{
+                    validator: Emali,
+                    required: true,
+                    trigger: 'blur'
+                }],
+                tel: [{
+                    validator: Tel,
+                    required: true,
+                    trigger: 'blur'
+                }],
+                detail: [{
+                    validator: Detail,
+                    required: true,
+                    trigger: 'blur'
+                }]
+            }
+        }
+    },
+    methods: {
+        open () {
+            this.$confirm('是否确认提交该条信息？', '确认信息', {
+                distinguishCancelAndClose: true,
+                confirmButtonText: '提交',
+                cancelButtonText: '取消'
+            }).then(() => {
+                this.$message({
+                    type: 'info',
+                    message: '提交信息成功'
+                })
+            }).catch(action => {
+                this.$message({
+                    type: 'info',
+                    message: action === 'cancel'
+                        ? '已取消提交' : '停留在当前页面'
+                })
+            })
+        }
+    }
 }
 </script>
 

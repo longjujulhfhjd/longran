@@ -19,7 +19,7 @@
                     <el-input type="textarea" v-model="registerForms.info" :placeholder="请输入留言内容"></el-input>
                 </el-form-item>
             </el-form>
-            <p class="skin-bto-hover submit-message">提交留言</p>
+            <el-button class="skin-bto-hover skin-bto-hover submit-message margin-l-30" @click="open"> 提交留言 </el-button>
             <p class="margin-tb-20 maybe-like text-c text-red" style="position:relative;"><span class="xiantiao"></span><span class="text-red icontent font-18 ">留言 <i class="font-18 text-red icon-jianyishu iconfont"></i></span></p>
             <ul class="message-detail-list clearfix">
                 <li class="message-detail-lists">
@@ -123,6 +123,26 @@ export default {
                     trigger: 'blur'
                 }]
             }
+        }
+    },
+    methods: {
+        open () {
+            this.$confirm('是否确认提交留言？', '确认信息', {
+                distinguishCancelAndClose: true,
+                confirmButtonText: '提交',
+                cancelButtonText: '取消'
+            }).then(() => {
+                this.$message({
+                    type: 'info',
+                    message: '提交成功'
+                })
+            }).catch(action => {
+                this.$message({
+                    type: 'info',
+                    message: action === 'cancel'
+                        ? '已取消提交' : '停留在当前页面'
+                })
+            })
         }
     }
 }

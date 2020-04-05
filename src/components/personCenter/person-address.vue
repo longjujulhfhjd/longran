@@ -22,7 +22,7 @@
                     <el-input type="text" v-model="registerForms.tel" name="tel" :placeholder="tel"></el-input>
                 </el-form-item>
             </el-form>
-            <span class="skin-bto-hover margin-l-30"> 保存</span>
+             <el-button class="skin-bto-hover margin-l-30" type="text" @click="open"> 保存 </el-button>
         </div>
         <p class="font-6 padding-tb-30">已有收货地址</p>
         <el-table :data="tableData" class="text-c" height="500" style="width: 100%">
@@ -35,7 +35,7 @@
                 <span class="hand">删除</span>
             </el-table-column>
             <el-table-column label="收货默认地址"  width="150px">
-                <span class="hand begin-set">设为默认</span>
+             <el-button class="hand begin-set" type="text" @click="opens"> 设为默认 </el-button>
                 <span class="seted button">默认地址</span>
             </el-table-column>
         </el-table>
@@ -154,6 +154,44 @@ export default {
                     trigger: 'blur'
                 }]
             }
+        }
+    },
+    methods: {
+        open () {
+            this.$confirm('是否确认增加该条收货地址？', '确认信息', {
+                distinguishCancelAndClose: true,
+                confirmButtonText: '添加',
+                cancelButtonText: '取消'
+            }).then(() => {
+                this.$message({
+                    type: 'info',
+                    message: '添加成功'
+                })
+            }).catch(action => {
+                this.$message({
+                    type: 'info',
+                    message: action === 'cancel'
+                        ? '已取消添加' : '停留在当前页面'
+                })
+            })
+        },
+        opens () {
+            this.$confirm('是否确认设置为默认地址？', '确认信息', {
+                distinguishCancelAndClose: true,
+                confirmButtonText: '添加',
+                cancelButtonText: '取消'
+            }).then(() => {
+                this.$message({
+                    type: 'info',
+                    message: '设置成功'
+                })
+            }).catch(action => {
+                this.$message({
+                    type: 'info',
+                    message: action === 'cancel'
+                        ? '放弃设置为默认收货地址' : '停留在当前页面'
+                })
+            })
         }
     }
 }

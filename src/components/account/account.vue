@@ -75,8 +75,7 @@
             <p class="margin-t-20">订单总计<span class="font-18 text-red">￥1888.00</span></p>
         </div>
        <div class="text-r margin-t-20 margin-r-20">
-            <router-link  class="skin-bto-hover text-decoration-none" to="/order/">确认支付</router-link>
-            <router-link  class="skin-bto-hover text-decoration-none" to="/order/unorder">取消订单</router-link>
+            <router-link  class="skin-bto-hover text-decoration-none" to="/shopprogress/pay">去支付</router-link>
        </div>
     </div>
 </template>

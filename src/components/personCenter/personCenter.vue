@@ -7,7 +7,7 @@
                     <img src="./image/tou.jpg"/>
                 </div>
                 <p class="padding-t-20 font-16 name-person fl margin-l-20">只想随自己的心</p>
-                <p class="el-icon-s-tools fr padding-r-50 margin-r-50 margin-t-20 font-18"></p>
+                <p @click="open" class="el-icon-s-tools fr padding-r-50 margin-r-50 margin-t-20 font-18"></p>
            </div>
            <ul class="person-toplist clearfix">
                <router-link to="/personCenter/personunpaid">
@@ -50,6 +50,7 @@
                 <router-link to="/personCenter/personcart">  <li class="person-lists">我的购物车</li></router-link>
                 <router-link to="/personCenter/personbought">  <li class="person-lists">已购买的宝贝</li></router-link>
                 <router-link to="/personCenter/personmyfoot">  <li class="person-lists">我的足迹</li></router-link>
+                <router-link to="/personCenter/allappraise">  <li class="person-lists">所有评价</li></router-link>
             </ul>
             <div class="fr person-content">
                 <p class="person-title">
@@ -68,6 +69,26 @@ export default {
     data () {
         return {
 
+        }
+    },
+    methods: {
+        open () {
+            this.$confirm('是否退出本次登录, 是否继续?', '提示', {
+                confirmButtonText: '退出登录',
+                cancelButtonText: '取消',
+                type: 'warning',
+                center: true
+            }).then(() => {
+                this.$message({
+                    type: 'success',
+                    message: '退出登录成功!'
+                })
+            }).catch(() => {
+                this.$message({
+                    type: 'info',
+                    message: '已取消退出登录'
+                })
+            })
         }
     }
 }

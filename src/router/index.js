@@ -16,6 +16,7 @@ import Personshipped from 'components/personCenter/person-shipped.vue'
 import Personreceived from 'components/personCenter/person-received.vue'
 import Personappraise from 'components/personCenter/person-appraise.vue'
 import Personrefund from 'components/personCenter/person-refund.vue'
+import Personallappraise from 'components/personCenter/allappraise.vue'
 import Application from 'components/application/application.vue'
 import Collect from 'components/collect/collect.vue'
 import Wallpaper from 'components/wallpaper/wallpaper.vue'
@@ -36,6 +37,28 @@ import Forget from 'components/forget/forget.vue'
 import Codeidentity from 'components/forget/codeidentity.vue'
 import Codeover from 'components/forget/codeover.vue'
 import Newpassword from 'components/forget/newpassword.vue'
+// 购买流程
+import Shopprogress from 'components/progress/shopprogress.vue'
+// 评价
+import Appraise from 'components/progress/appraise.vue'
+// 评价成功
+import Success from 'components/progress/success.vue'
+// 查看评价
+import Seeappraise from 'components/progress/seeappraise.vue'
+// 付款后的去评价
+import Toappraise from 'components/progress/toappraise.vue'
+// 退款
+import Refund from 'components/progress/refund.vue'
+// 等待退款
+import Returnsuccess from 'components/progress/returnsuccess.vue'
+// 收货
+import Received from 'components/progress/received.vue'
+// 付款
+import Pay from 'components/progress/pay.vue'
+// 修改订单信息
+import Revises from 'components/progress/revises.vue'
+// 修改地址信息
+import Updateadd from 'components/progress/updateadd.vue'
 Vue.use(Router)
 export default new Router({
     mode: 'history',
@@ -45,6 +68,73 @@ export default new Router({
             path: '/',
             name: 'index',
             component: Index
+        },
+        {
+            // 修改订单
+            path: '/revises',
+            name: 'revises',
+            component: Revises
+        }, {
+            // 修改地址
+            path: '/updateadd',
+            name: 'updateadd',
+            component: Updateadd
+        },
+        {
+            // 去评价
+            path: '/toappraise',
+            name: 'toappraise',
+            component: Toappraise
+        },
+        {
+            // 评价成功
+            path: '/success',
+            name: 'success',
+            component: Success
+        },
+        {
+            // 评价成功
+            path: '/returnsuccess',
+            name: 'returnsuccess',
+            component: Returnsuccess
+        },
+        {
+            // 查看评价
+            path: '/seeappraise',
+            name: 'seeappraise',
+            component: Seeappraise
+        },
+        {
+            // 支付流程
+            path: '/shopprogress',
+            name: 'shopprogress',
+            component: Shopprogress,
+            children: [
+                {
+                    // 付款
+                    path: '/shopprogress/pay',
+                    name: 'pay',
+                    component: Pay
+                },
+                {
+                    // 评价
+                    path: '/shopprogress/appraise',
+                    name: 'appraise',
+                    component: Appraise
+                },
+                {
+                    // 退款
+                    path: '/shopprogress/refund',
+                    name: 'refund',
+                    component: Refund
+                },
+                {
+                    // 收货
+                    path: '/shopprogress/received',
+                    name: 'received',
+                    component: Received
+                }
+            ]
         },
         {
             // 墙纸Wallpaper
@@ -144,6 +234,12 @@ export default new Router({
                 path: '/personCenter/personrefund',
                 name: 'personrefund',
                 component: Personrefund
+            },
+            {
+                // 所有评价
+                path: '/personCenter/allappraise',
+                name: 'allappraise',
+                component: Personallappraise
             }]
         },
         {

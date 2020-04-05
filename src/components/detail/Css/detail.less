@@ -7,14 +7,7 @@
         height:80%;
     }
 }
-//  /deep/ ul.rg-select__list {
-//     list-style: none;
-//     overflow-y: auto;
-//     overflow-x: hidden;
-//     max-height: 300px;
-//     margin: 0;
-//     padding: 3px 0;
-// }
+
 .detail-detail {
     width:60%;
     padding:30px;
@@ -45,4 +38,41 @@
     margin-right:20px;
     width:45%;
     border:1px solid #666;
+}
+.received-address-lists{
+    border:1px solid #ccc;
+    width:30%;
+    position: relative;
+    margin-left:10px;
+    margin-top:10px;
+}
+
+.received-address-lists:after{
+    content: '';
+    border: 15px solid transparent;
+    border-bottom-color: #FF2D52;
+    border-right-color: #FF2D52;
+    position: absolute;
+    bottom:0;
+    right: 0;
+    z-index: 1;
+    display: none;
+}
+.gou{
+    position: absolute;
+    bottom:0;
+    right: 0;
+    z-index:2;
+    padding-right: 2px;
+    padding-bottom: 3px;
+    display: none;
+}
+.received-address-lists:hover:after{
+    display: block;
+}
+.received-address-lists:hover .gou{
+    display: block;
+}
+.received-address-lists:hover {
+    border:1px solid #FF2D52;
 }
