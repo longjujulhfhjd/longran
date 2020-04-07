@@ -1,9 +1,12 @@
 <template>
     <div class="longran-Register">
         <p class="font-28 text-c">注册</p>
-        <el-form :model="registerForms"  :rules="rules"  class="register-style" :label-position="labelPosition" label-width="100px">
+        <el-form :model="registerForms"  ref='registerForms' :rules="rules"  class="register-style" :label-position="labelPosition" label-width="100px">
             <el-form-item label="邮箱" prop="email">
                 <el-input type="text" v-model="registerForms.email" :placeholder="email"></el-input>
+            </el-form-item>
+             <el-form-item label="电话" prop="tel">
+                <el-input type="text" v-model="registerForms.tel" :placeholder="tel"></el-input>
             </el-form-item>
             <el-form-item label="密码"  prop="pwd">
                 <el-input type="password" v-model="registerForms.pwd" :placeholder="pwd"></el-input>
@@ -11,18 +14,21 @@
             <el-form-item label="确认密码"  prop="repwd">
                 <el-input type="password" v-model="registerForms.repwd" :placeholder="repwd"></el-input>
             </el-form-item>
+            <el-form-item label="昵称"  prop="name">
+                <el-input type="text" v-model="registerForms.name" :placeholder="name"></el-input>
+            </el-form-item>
             <el-form-item label="校验证" class="code-style"  prop="checkcode" >
                 <el-input type="text" v-model="registerForms.checkcode" :placeholder="checkcode"></el-input>
                 <Verifi></Verifi>
             </el-form-item>
             <el-form-item label="短信验证码"  class="code-style" prop="code">
-                <el-input type="text" v-model="registerForms.code" :placeholder="code"></el-input>
+                <el-input type="text"  v-model="registerForms.code" :placeholder="code"></el-input>
                 <div class="skin-bto code-btn" @click="getCode()">获取验证码</div>
             </el-form-item>
         </el-form>
-
+        <p class="text-c text-red">*请妥善保管账户密码信息，勿随意泄露,手机号为识别及验证账户身份的唯一依据</p>
         <div class="margin-auto register-box ">
-            <p class="font-28 register-btn  text-c"  @click="submitRegister('registerForms')" :loading ="loding">注册</p>
+            <p class="font-28 register-btn  text-c"  @click="sendregister('registerForms')" >注册</p>
             <router-link skin-bto class="fr" to="/login">
                 去登录?
             </router-link>
@@ -35,7 +41,8 @@ import axios from 'axios'
 import Verifi from './code'
 import {
     regEmail,
-    regPwd
+    regPwd,
+    regTel
 } from './js/reg'
 export default {
     components: {
@@ -47,6 +54,15 @@ export default {
                 callback(new Error('请输入密码'))
             } else if (!regPwd.test(value)) {
                 callback(new Error('密码格式不正确'))
+            } else {
+                callback()
+            }
+        }
+        var Tel = (rule, value, callback) => {
+            if (!value) {
+                callback(new Error('请输入电话'))
+            } else if (!regTel.test(value)) {
+                callback(new Error('电话格式不正确'))
             } else {
                 callback()
             }
@@ -83,24 +99,37 @@ export default {
                 callback()
             }
         }
+        var Name = (rule, value, callback) => {
+            if (value === '') {
+                callback(new Error('昵称不能为空'))
+            } else {
+                callback()
+            }
+        }
         return {
             loding: false,
             email: '请输入邮箱',
+            tel: '请输入电话',
             pwd: '请输入密码',
             checkcode: '请输入效验码',
             repwd: '请再次确认密码',
             code: '短信验证码',
+            name: '请输入一个昵称',
             labelPosition: 'right',
-            registerForms: {
-                email: '',
-                pwd: '',
-                repwd: '',
-                checkcode: '',
-                code: ''
-            },
+            radio: '',
             rules: {
                 email: [{
                     validator: Email,
+                    required: true,
+                    trigger: 'blur'
+                }],
+                name: [{
+                    validator: Name,
+                    required: true,
+                    trigger: 'blur'
+                }],
+                tel: [{
+                    validator: Tel,
                     required: true,
                     trigger: 'blur'
                 }],
@@ -124,78 +153,79 @@ export default {
                     required: true,
                     trigger: 'blur'
                 }]
+            },
+            registerForms: {
+                email: '',
+                pwd: '',
+                repwd: '',
+                name: '',
+                tel: '',
+                checkcode: '',
+                code: ''
             }
         }
     },
     methods: {
         // 获取验证码
         getCode () {
-            console.log(111)
-            let _this = this
-            let btn = document.querySelector('.code-btn')
-            btn.onclick = function () {
-                // 获取验证码
-                let email = _this.registerForms.email
-                axios({
-                    url: 'http://192.168.43.212:3000/getcode',
-                    method: 'get',
-                    params: {
-                        email
-                    }
-                }).then((res) => {
-                    console.log(res)
-                    if (res.data.status === 200) {
-                        _this.$message({
-                            message: '验证码发送成功',
-                            center: true,
-                            type: 'success',
-                            duration: 2000,
-                            // 关闭提示信息的回调
-                            onClose: () => {
-                                // _this.change()
-                            }
-                        })
-                    } else {
-                        _this.$message({
-                            message: '验证码发送失败',
-                            center: true,
-                            type: 'error',
-                            // 显示的时间
-                            duration: 2000,
-                            // 关闭提示信息的回调
-                            onClose: () => {
-                                // _this.change()
-                            }
-                        })
-                    }
-                })
-            }
+            // 获取验证码
+            let email = this.registerForms.email
+            axios({
+                url: 'http://127.0.0.1:3000/sendcode',
+                method: 'get',
+                params: {
+                    email
+                }
+            }).then((res) => {
+                console.log(res)
+                console.log(11111)
+                if (res.data.status === 200) {
+                    this.$message({
+                        message: '验证码发送成功',
+                        center: true,
+                        type: 'success',
+                        duration: 2000,
+                        // 关闭提示信息的回调
+                        onClose: () => {
+                            // _this.change()
+                        }
+                    })
+                } else {
+                    this.$message({
+                        message: '验证码发送失败',
+                        center: true,
+                        type: 'error',
+                        duration: 2000,
+                        // 关闭提示信息的回调
+                        onClose: () => {
+                        }
+                    })
+                }
+            })
         },
         // 提交注册信息
-        submitRegister (formName) {
+        sendregister (formName) {
             this.$refs[formName].validate((valid) => {
                 if (valid) {
                     // 注册
-                    this.loding = !this.loding
                     let data = {
                         email: this.registerForms.email,
-                        pwd: this.registerForms.pwd,
+                        tel: this.registerForms.tel,
+                        pwd: this.$md5(this.registerForms.pwd),
+                        name: this.registerForms.name,
                         code: this.registerForms.code,
                         checkcode: this.registerForms.checkcode
                     }
                     axios({
-                        url: 'http://192.168.43.212:3000/register',
+                        url: 'http://127.0.0.1:3000/register',
                         method: 'post',
                         params: {
-                            email: data.email,
-                            pwd: data.pwd,
-                            code: data.code
+                            data
                         }
                     }).then((res) => {
                         console.log(res)
-                        console.log(222)
                         if (res.data.status === 200) {
-                            this.loding = !this.loding
+                            window.location.href = '/login'
                             this.$message({
                                 message: '注册成功',
                                 center: true,
@@ -203,12 +233,9 @@ export default {
                                 duration: 2000,
                                 // 关闭提示信息的回调
                                 onClose: () => {
-                                    this.change()
                                 }
                             })
-                            this.loding = !this.loding
                         } else {
-                            console.log(333)
                             this.$message({
                                 message: '注册失败',
                                 center: true,
@@ -216,24 +243,20 @@ export default {
                                 duration: 2000,
                                 // 关闭提示信息的回调
                                 onClose: () => {
-                                    this.change()
                                 }
                             })
-                            // this.loding = !this.loding
                         }
                     })
                 } else {
                     this.$message({
-                        message: '网络出错',
+                        message: '请将信息填写完整！',
                         center: true,
                         type: 'error',
                         duration: 2000,
                         // 关闭提示信息的回调
                         onClose: () => {
-                            this.change()
                         }
                     })
-                    this.loding = !this.loding
                     return false
                 }
             })

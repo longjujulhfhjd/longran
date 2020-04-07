@@ -4,7 +4,7 @@
         <div class="person-top ">
            <div class="clearfix top-box" >
                 <div class="imgbox fl">
-                    <img src="./image/tou.jpg"/>
+                    <img src="./image/touimg.jpg"/>
                 </div>
                 <p class="padding-t-20 font-16 name-person fl margin-l-20">只想随自己的心</p>
                 <p @click="open" class="el-icon-s-tools fr padding-r-50 margin-r-50 margin-t-20 font-18"></p>

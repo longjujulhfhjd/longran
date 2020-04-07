@@ -4,7 +4,7 @@
         <div class="margin-t-20 margin-l-20 clearfix">
             <span class="padding-r-20 fl">当前头像:</span>
             <div class="img-touimg fl" >
-                <img class="person-imgnew " src="./image/tou.jpg"/>
+                <img class="person-imgnew " src="./image/touimg.jpg"/>
                 <router-link to='/personCenter/Personperson/edit'><span class="edit-tou">编辑头像</span></router-link>
             </div>
             <div class="fl margin-r-20"> <router-view></router-view></div>

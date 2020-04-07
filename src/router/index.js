@@ -143,7 +143,6 @@ export default new Router({
             component: Wallpaper,
             children: [{
                 path: '/wallpaper/',
-                name: 'listshop',
                 component: Listshop
             }]
         },
@@ -154,7 +153,6 @@ export default new Router({
             component: Wallpaint,
             children: [{
                 path: '/wallpaint/',
-                name: 'listshop',
                 component: Listshop
             }]
         },
@@ -273,7 +271,6 @@ export default new Router({
             component: Wallcloth,
             children: [{
                 path: '/wallcloth/',
-                name: 'listshop',
                 component: Listshop
             }]
         },

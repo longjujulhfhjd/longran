@@ -1,0 +1,373 @@
+`message`CREATE DATABASE longranwall
+USER longranwall
+-- 验证码表
+CREATE TABLE verify (
+	-- 验证码id
+	verify_id INT PRIMARY KEY AUTO_INCREMENT,
+	-- 邮箱
+	verify_email VARCHAR(50),
+	 -- 验证码
+	CODE VARCHAR(10),
+	-- 收到验证码的时间
+	verify_time TIMESTAMP
+)
+-- 分类表创建
+CREATE TABLE class (
+	-- 分类id
+	class_id INT PRIMARY KEY AUTO_INCREMENT,
+	-- 分类名称
+	class_name VARCHAR(20),
+	 -- 父级id
+	parent INT
+)			
+-- 分类表插入数据
+INSERT INTO class VALUES 
+			(1, '墙纸' ,0),
+			(2, '墙衣' ,0),
+			(3, '墙布' ,0),
+			(4, '墙画' ,0),
+			(NULL, '清新' ,1),
+			(NULL, '儿童' ,1),
+			(NULL, '暖色' ,1),
+			(NULL, '深色' ,1),
+			(NULL, '大花' ,1),
+			(NULL, '小花' ,1),
+			(NULL, '条纹' ,1),
+			(NULL, '素色' ,1),
+			(NULL, '红色' ,1),
+			(NULL, '橙色' ,1),
+			(NULL, '黄色' ,1),
+			(NULL, '绿色' ,1),
+			(NULL, '蓝色' ,1),
+			(NULL, '紫色' ,1),
+			(NULL, '粉色' ,1),
+			(NULL, '灰色' ,1),
+			(NULL, '清新' ,2),
+			(NULL, '儿童' ,2),
+			(NULL, '暖色' ,2),
+			(NULL, '深色' ,2),
+			(NULL, '大花' ,2),
+			(NULL, '小花' ,2),
+			(NULL, '条纹' ,2),
+			(NULL, '素色' ,2),
+			(NULL, '红色' ,2),
+			(NULL, '橙色' ,2),
+			(NULL, '黄色' ,2),
+			(NULL, '绿色' ,2),
+			(NULL, '蓝色' ,2),
+			(NULL, '紫色' ,2),
+			(NULL, '粉色' ,2),
+			(NULL, '灰色' ,2),
+			(NULL, '清新' ,3),
+			(NULL, '儿童' ,3),
+			(NULL, '暖色' ,3),
+			(NULL, '深色' ,3),
+			(NULL, '大花' ,3),
+			(NULL, '小花' ,3),
+			(NULL, '条纹' ,3),
+			(NULL, '素色' ,3),
+			(NULL, '红色' ,3),
+			(NULL, '橙色' ,3),
+			(NULL, '黄色' ,3),
+			(NULL, '绿色' ,3),
+			(NULL, '蓝色' ,3),
+			(NULL, '紫色' ,3),
+			(NULL, '粉色' ,3),
+			(NULL, '灰色' ,3),
+			(NULL, '清新' ,4),
+			(NULL, '儿童' ,4),
+			(NULL, '暖色' ,4),
+			(NULL, '深色' ,4),
+			(NULL, '大花' ,4),
+			(NULL, '小花' ,4),
+			(NULL, '条纹' ,4),
+			(NULL, '素色' ,4),
+			(NULL, '红色' ,4),
+			(NULL, '橙色' ,4),
+			(NULL, '黄色' ,4),
+			(NULL, '绿色' ,4),
+			(NULL, '蓝色' ,4),
+			(NULL, '紫色' ,4),
+			(NULL, '粉色' ,4),
+			(NULL, '灰色' ,4)
+-- 查询分类表
+SELECT * FROM class
+-- 删除分类表
+DROP TABLE class
+
+CREATE TABLE class (
+	-- 分类id
+	class_id VARCHAR(20) PRIMARY KEY,
+	-- 分类名称
+	class_name VARCHAR(20)
+)
+-- 查询分类表
+SELECT * FROM class
+-- 删除分类表
+DROP TABLE class
+-- 分类表classfiy插入数据
+INSERT INTO class VALUES 
+			('01', '墙纸'),
+			('02', '墙衣'),
+			('03', '墙布'),
+			('04', '墙画'),
+			('0101', '清新'),
+			('0102', '儿童'),
+			('0103', '暖色'),
+			('0104', '深色'),
+			('0105', '白色'),
+			('0106', '大花'),
+			('0107', '小花'),
+			('0108', '条纹'),
+			('0109', '素色'),
+			('0110', '红色'),
+			('0111', '橙色'),
+			('0112', '黄色'),
+			('0113', '绿色'),
+			('0114', '蓝色'),
+			('0115', '紫色'),
+			('0116', '粉色'),
+			('0117', '灰色'),
+			('0201', '清新'),
+			('0202', '儿童'),
+			('0203', '暖色'),
+			('0204', '深色'),
+			('0205', '白色'),
+			('0206', '大花'),
+			('0207', '小花'),
+			('0208', '条纹'),
+			('0209', '素色'),
+			('0210', '红色'),
+			('0211', '橙色'),
+			('0212', '黄色'),
+			('0213', '绿色'),
+			('0214', '蓝色'),
+			('0215', '紫色'),
+			('0216', '粉色'),
+			('0217', '灰色'),
+			('0301', '清新'),
+			('0302', '儿童'),
+			('0303', '暖色'),
+			('0304', '深色'),
+			('0305', '白色'),
+			('0306', '大花'),
+			('0307', '小花'),
+			('0308', '条纹'),
+			('0309', '素色'),
+			('0310', '红色'),
+			('0311', '橙色'),
+			('0312', '黄色'),
+			('0313', '绿色'),
+			('0314', '蓝色'),
+			('0315', '紫色'),
+			('0316', '粉色'),
+			('0317', '灰色'),
+			('0401', '清新'),
+			('0402', '儿童'),
+			('0403', '暖色'),
+			('0404', '深色'),
+			('0405', '白色'),
+			('0406', '大花'),
+			('0407', '小花'),
+			('0408', '条纹'),
+			('0409', '素色'),
+			('0410', '红色'),
+			('0411', '橙色'),
+			('0412', '黄色'),
+			('0413', '绿色'),
+			('0414', '蓝色'),
+			('0415', '紫色'),
+			('0416', '粉色'),
+			('0417', '灰色')
+-- 规格表specifications
+CREATE TABLE spec (
+	-- 规格id
+	spec_id INT PRIMARY KEY AUTO_INCREMENT,
+	-- 规格名称
+	spec_name VARCHAR(20),
+	-- 规格类型
+	spec_list VARCHAR(300)
+)
+-- 规格表spec插入数据
+INSERT INTO spec VALUES 
+	(NULL, 'color' , '红色，橙色，黄色，绿色，蓝色，米白，紫色') ,
+	(NULL, 'unit' , '卷，平方') ,
+	(NULL, 'square' , '10-15,15-20,20-25,25-30,30-35,35-40,40-45,45-50,50-55,55-60,60-65,65-70,70-75,75-80,80-85,85-90,90-95,95-100')
+-- 查询规格表
+SELECT * FROM spec
+-- 删除规格表
+DROP TABLE spec
+
+-- 商品表
+CREATE TABLE goods (
+	 -- 商品id
+	goods_id INT PRIMARY KEY AUTO_INCREMENT,
+	-- 商品名称
+	goods_name VARCHAR(200),
+	-- 商品价格
+	goods_price DOUBLE(8,2),
+	-- 商品型号
+	good_marque VARCHAR(20),
+	-- 商品图片
+	goods_img VARCHAR(1000),
+	-- 商品详情
+	goods_detail LONGTEXT,
+	-- 商品分类 分类表外键 
+	class VARCHAR(20),
+	-- 商品规格 规格表外键
+	spec VARCHAR(10),
+	CONSTRAINT class_fore FOREIGN KEY (class) REFERENCES  class(class_id)
+)
+-- 查询商品表
+SELECT * FROM goods
+-- 删除商品表
+DROP TABLE goods
+-- 商品表goods插入数据
+INSERT INTO goods VALUES (NULL,'小清新墙纸','50.00','35685623',NULL,NULL,'0101','1,2,3'),
+			(NULL,'儿童墙纸','50.00','35685623',NULL,NULL,'0102','1,2,3'),
+			(NULL,'小清新墙布','50.00','35685623',NULL,NULL,'0301','1,2,3'),
+			(NULL,'儿童墙布','50.00','35685623',NULL,NULL,'0302','1,2,3'),
+			(NULL,'小清新墙衣','50.00','35685623',NULL,NULL,'0201','1,2,3'),
+			(NULL,'儿童墙衣','50.00','35685623',NULL,NULL,'0202','1,2,3'),
+			(NULL,'小清新墙画','50.00','35685623',NULL,NULL,'0401','1,2,3'),
+			(NULL,'儿童墙画','50.00','35685623',NULL,NULL,'0402','1,2,3')
+
+-- 用户表
+CREATE TABLE USER (
+      -- 用户id
+      user_id INT PRIMARY KEY AUTO_INCREMENT,
+      -- 用户名
+      user_name VARCHAR(30),
+      -- 用户密码
+      user_pwd VARCHAR(20),
+      -- 用户头像
+      user_img VARCHAR(1000),
+      -- 用户地址
+      user_add VARCHAR(50),
+      -- 用户电话号码
+      user_tel VARCHAR(20),
+      -- 用户邮箱
+      user_email VARCHAR(20),
+      -- 用户性别
+      user_sex VARCHAR(20),
+      -- 用户真实名字
+      user_realname VARCHAR(20),
+      -- 注册时间
+      register_time TIMESTAMP
+)
+-- 查询用户表
+SELECT * FROM USER
+-- 删除用户表
+DROP TABLE USER
+
+-- 收藏表
+CREATE TABLE collect (
+      -- 商品id
+      goods_id INT,
+      -- 用户id
+      user_id INT,
+      CONSTRAINT goods_fore FOREIGN KEY (goods_id) REFERENCES  goods(goods_id),
+      CONSTRAINT user_fore FOREIGN KEY (user_id) REFERENCES  USER(user_id) 
+)
+-- 查询收藏表
+SELECT * FROM collect
+-- 删除收藏表
+DROP TABLE collect
+
+-- 评论表
+CREATE TABLE discuss (
+	-- 评论id
+	discuss_id INT PRIMARY KEY AUTO_INCREMENT,
+	-- 商品id
+        goods_id INT,
+	-- 用户id
+	user_id INT,
+        -- 评论的内容
+        discuss_detail VARCHAR(500),
+        -- 评论的图片
+        discuss_img VARCHAR(1000),
+      CONSTRAINT g_fore FOREIGN KEY (goods_id) REFERENCES  goods(goods_id),
+      CONSTRAINT u_fore FOREIGN KEY (user_id) REFERENCES  USER(user_id)
+)
+-- 查询评论表
+SELECT * FROM discuss
+-- 删除评论表
+DROP TABLE discuss
+
+-- 招聘表
+CREATE TABLE application (
+	-- 招聘id
+	application_id INT PRIMARY KEY AUTO_INCREMENT,
+	-- 用户id
+	user_id INT,
+        -- 工作情况
+        application_detail VARCHAR(1000),
+          -- 发送求职时间
+         application_time TIMESTAMP,
+      CONSTRAINT us_fore FOREIGN KEY (user_id) REFERENCES  USER(user_id)
+)
+-- 查询招聘表
+SELECT * FROM application
+-- 删除招聘表
+DROP TABLE application
+
+-- 留言表
+-- 用户id
+-- user_id INT,
+CREATE TABLE message (
+	-- 招聘id
+	message_id INT PRIMARY KEY AUTO_INCREMENT,
+	-- 留言电话
+	   message_tel VARCHAR(30),
+	-- 留言邮箱
+	   message_email VARCHAR(50),
+	
+        -- 给我们的意见和建议
+        message_detail VARCHAR(1000),
+        -- 留言时间
+        message_time TIMESTAMP
+        -- CONSTRAINT users_fore FOREIGN KEY (user_id) REFERENCES  USER(user_id)
+)
+-- 查询留言表
+SELECT * FROM message
+-- 删除留言表
+DROP TABLE message
+
+-- 公告表
+CREATE TABLE news (
+	-- 公告id
+	news_id INT PRIMARY KEY AUTO_INCREMENT,
+	-- 公告标题
+        news_title VARCHAR(1000),
+        -- 公告内容
+        news_detail VARCHAR(1000),
+        -- 活动开始时间内容
+        news_starttime VARCHAR(1000),
+        -- 发布结束的时间
+        news_endtime VARCHAR(1000),
+        -- 发布公告的时间
+        news_time TIMESTAMP
+)
+-- 查询公告表
+SELECT * FROM news
+-- 删除公告表
+DROP TABLE news
+
+-- 订单表
+CREATE TABLE orders (
+	-- 订单id
+	orders_id INT PRIMARY KEY AUTO_INCREMENT,
+	-- 订单状态
+	orders_condition INT,
+	-- 订单总价
+	orders_total DOUBLE(8,2),
+	-- 用户id
+	user_id INT,
+	-- 下订单时间
+	orders_time TIMESTAMP,
+	CONSTRAINT er_fore FOREIGN KEY (user_id) REFERENCES USER(user_id)
+)
+-- 查询订单
+SELECT * FROM orders
+-- 删除订单表
+DROP TABLE orders

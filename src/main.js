@@ -14,6 +14,10 @@ import './css/font/iconfont.css'
 import Swiper from 'swiper'
 import 'swiper/css/swiper.min.css'
 import vRegion from 'v-region'
+import moment from 'moment'
+Vue.filter('dateformat', function (dataStr, pattern = 'YYYY-MM-DD HH:mm:ss') {
+    return moment(dataStr).format(pattern)
+})
 Vue.use(vRegion)
 Vue.config.productionTip = false
 Vue.prototype.$md5 = md5

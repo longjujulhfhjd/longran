@@ -15,22 +15,23 @@
         <p class="padding-10 padding-l-20 font-18 text-orange text-weight"><span class="el-icon-location-outline"></span>贵州省纳雍县阳光星城大唐果酒店上行30米</p>
         <img style="height:500px; width:700px;" src="./image/api.png"/>
         <p class="padding-20">有意向的向我们预留个人联系，方便我们安排面试</p>
-        <el-form :rules="rules" :model="loginForms" label-width="80px">
+        <el-form :rules="rules"  ref='applicationruleForm'  :model="applicationruleForm" label-width="80px">
             <el-form-item label="邮箱"  prop="email">
-                <el-input type="text" v-model="loginForms.email" :placeholder="email" ></el-input>
+                <el-input type="text" v-model="applicationruleForm.email" :placeholder="email" ></el-input>
             </el-form-item>
             <el-form-item label="电话号码"  prop="tel">
-                <el-input type="text" v-model="loginForms.tel" :placeholder="tel"></el-input>
+                <el-input type="text" v-model="applicationruleForm.tel" :placeholder="tel"></el-input>
             </el-form-item>
             <el-form-item label="工作情况"  prop="detail">
-                <el-input type="textarea" v-model="loginForms.detail" :placeholder="detail"></el-input>
+                <el-input type="textarea" v-model="applicationruleForm.detail" :placeholder="detail"></el-input>
             </el-form-item>
         </el-form>
-        <el-button class="skin-bto-hover margin-l-30" @click="open"> 提交 </el-button>
+        <el-button class="skin-bto-hover margin-l-30" @click="submitapplication('applicationruleForm')" > 提交 </el-button>
     </div>
 </template>
 
 <script>
+import axios from 'axios'
 import {regEmail, regTel} from './js/reg.js'
 export default {
     data () {
@@ -64,7 +65,7 @@ export default {
             tel: '请输入你的电话号码',
             detail: '请输入与该工作相关的近几年你的大体工作情况',
             labelPosition: 'right',
-            loginForms: {
+            applicationruleForm: {
                 email: '',
                 tel: '',
                 detail: ''
@@ -89,22 +90,48 @@ export default {
         }
     },
     methods: {
-        open () {
-            this.$confirm('是否确认提交该条信息？', '确认信息', {
-                distinguishCancelAndClose: true,
-                confirmButtonText: '提交',
-                cancelButtonText: '取消'
-            }).then(() => {
-                this.$message({
-                    type: 'info',
-                    message: '提交信息成功'
-                })
-            }).catch(action => {
-                this.$message({
-                    type: 'info',
-                    message: action === 'cancel'
-                        ? '已取消提交' : '停留在当前页面'
-                })
+        // 提交应聘信息
+        submitapplication (forname) {
+            this.$refs[forname].validate((valid) => {
+                this.loding = !this.loding
+                if (valid) {
+                    let data = {
+                        email: this.applicationruleForm.email,
+                        tel: this.applicationruleForm.tel,
+                        info: this.applicationruleForm.info
+                    }
+                    axios({
+                        url: 'http://127.0.0.1:3000/sendapplication',
+                        method: 'post',
+                        params: {
+                            data
+                        }
+                    }).then((res) => {
+                        if (res.data.status === 200) {
+                            this.$message({
+                                message: '留言成功',
+                                center: true,
+                                type: 'success',
+                                duration: 2000
+                            })
+                        } else {
+                            this.$message({
+                                message: '留言失败',
+                                center: true,
+                                type: 'error',
+                                duration: 2000
+                            })
+                        }
+                    })
+                } else {
+                    this.$message({
+                        message: '请把表格填写完整！',
+                        center: true,
+                        type: 'error',
+                        duration: 2000
+                    })
+                    return false
+                }
             })
         }
     }
