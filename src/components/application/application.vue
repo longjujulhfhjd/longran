@@ -95,7 +95,10 @@ export default {
             this.$refs[forname].validate((valid) => {
                 this.loding = !this.loding
                 if (valid) {
+                    let id = JSON.parse(window.localStorage.getItem('userinfo')).id
+                    console.log(id.id)
                     let data = {
+                        id: id,
                         email: this.applicationruleForm.email,
                         tel: this.applicationruleForm.tel,
                         info: this.applicationruleForm.info
@@ -134,6 +137,8 @@ export default {
                 }
             })
         }
+    },
+    mounted () {
     }
 }
 </script>

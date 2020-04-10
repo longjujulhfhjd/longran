@@ -89,12 +89,13 @@ export default {
                     }).then((res) => {
                         if (res.data.status === 200) {
                             window.location.href = '/personCenter'
-                            // window.localStorage.setItem('userinfo', JSON.stringify(res.data.data.info))
-                            // window.localStorage.setItem('token', JSON.stringify(res.data.data.token))
-                            // this.$store.commit('changeInfo', res.data.data)
+                            // 登录成功就将用户的信息存到userinfo 和token里
+                            window.localStorage.setItem('userinfo', JSON.stringify(res.data.data.info))
+                            window.localStorage.setItem('token', JSON.stringify(res.data.data.token))
+                            this.$store.commit('changeInfo', res.data.data)
                             this.$message({
-                                message: '登录成功！',
-                                // message: '欢迎' + res.data.data.info.email,
+                                // message: '登录成功！',
+                                message: '欢迎' + res.data.data.info.email,
                                 center: true,
                                 type: 'success',
                                 duration: 2000

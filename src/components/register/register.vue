@@ -177,8 +177,6 @@ export default {
                     email
                 }
             }).then((res) => {
-                console.log(res)
-                console.log(11111)
                 if (res.data.status === 200) {
                     this.$message({
                         message: '验证码发送成功',
@@ -211,7 +209,8 @@ export default {
                     let data = {
                         email: this.registerForms.email,
                         tel: this.registerForms.tel,
-                        pwd: this.$md5(this.registerForms.pwd),
+                        pwd: this.registerForms.pwd,
+                        // pwd: this.$md5(this.registerForms.pwd),
                         name: this.registerForms.name,
                         code: this.registerForms.code,
                         checkcode: this.registerForms.checkcode

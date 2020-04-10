@@ -340,8 +340,18 @@ export default {
     },
     mounted () {
         this.tabchange()
+        return setTimeout(() => {
+            this.isLogin()
+        }, 5000)
     },
     methods: {
+        // 验证是否登录
+        isLogin () {
+            let token = window.localStorage.getItem('token')
+            if (!token) {
+                this.$router.push('/login')
+            }
+        },
         tabchange () {
             var chanBoxTitle = document.querySelectorAll('.chanbox-title')
             for (var i = 0; i < chanBoxTitle.length; i++) {

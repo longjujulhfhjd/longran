@@ -6,8 +6,8 @@
                 <div class="imgbox fl">
                     <img src="./image/touimg.jpg"/>
                 </div>
-                <p class="padding-t-20 font-16 name-person fl margin-l-20">只想随自己的心</p>
-                <p @click="open" class="el-icon-s-tools fr padding-r-50 margin-r-50 margin-t-20 font-18"></p>
+                <p class="padding-t-20 font-16 name-person fl margin-l-20">{{name}}</p>
+                <p class=" fr padding-r-50 margin-r-50 margin-t-20" @click="loginout">退出登录</p>
            </div>
            <ul class="person-toplist clearfix">
                <router-link to="/personCenter/personunpaid">
@@ -68,28 +68,23 @@
 export default {
     data () {
         return {
-
+            name: ''
         }
     },
     methods: {
-        open () {
-            this.$confirm('是否退出本次登录, 是否继续?', '提示', {
-                confirmButtonText: '退出登录',
-                cancelButtonText: '取消',
-                type: 'warning',
-                center: true
-            }).then(() => {
-                this.$message({
-                    type: 'success',
-                    message: '退出登录成功!'
-                })
-            }).catch(() => {
-                this.$message({
-                    type: 'info',
-                    message: '已取消退出登录'
-                })
-            })
+        // 退出登录
+        loginout () {
+            let token = window.localStorage.getItem('token')
+            if (token) {
+                window.localStorage.removeItem('token')
+                this.$router.push('/')
+                this.$router.go(0)
+            }
         }
+    },
+    mounted () {
+        let name = JSON.parse(window.localStorage.getItem('userinfo')).name
+        this.name = name
     }
 }
 </script>

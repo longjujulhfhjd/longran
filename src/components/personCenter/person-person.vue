@@ -1,6 +1,6 @@
 <template>
     <div class="padding-10">
-        <p classfont-6>亲爱的 <span class="text-weight">只想随自己的心</span>，填写真实的资料，有助于好友找到你哦。</p>
+        <p class="font-16">亲爱的 <span class="text-weight padding-lr-10">{{name}}</span>，填写真实的资料，有助于好友找到你哦。</p>
         <div class="margin-t-20 margin-l-20 clearfix">
             <span class="padding-r-20 fl">当前头像:</span>
             <div class="img-touimg fl" >
@@ -45,7 +45,7 @@ export default {
             }
         }
         return {
-            name: '只想随自己的心',
+            name: '',
             sex: '',
             labelPosition: 'right',
             registerForms: {
@@ -85,6 +85,10 @@ export default {
                 })
             })
         }
+    },
+    mounted () {
+        let name = JSON.parse(window.localStorage.getItem('userinfo')).name
+        this.name = name
     }
 }
 </script>

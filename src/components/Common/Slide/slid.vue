@@ -77,7 +77,7 @@
                 </div>
             </ul>
             </el-drawer>
-            <li  title="打开客服会话"  class="slide-list server-bto"   @click="drawert = true" style="float:none;" >
+            <li  title="打开客服会话"  class="slide-list"  @click="drawert = true" style="float:none;" >
                 <i class="font-18 el-icon-service"></i>
             </li>
             <el-drawer
@@ -87,14 +87,13 @@
                 direction='ltr'
                 :append-to-body="true"
                 :before-close="serverClose"
-                @close='closedsever'
                 size="30%">
-                <ul class="server-box clearfix" style="height:450px;overflow:auto" v-infinite-scroll>
-                    <li class="clearfix" style="width:100%;float:none;">
+                <ul class="server-box clearfix" style="height:450px;overflow:auto" v-infinite-scroll="load">
+                   <li class="clearfix" >
                        <img class="fl sever-img" src="./images/eyes-img3.png"/>
                        <div class="server-con">请问有什么可以帮助你的？客服小龙为您服务</div>
                    </li>
-                    <li class="clearfix margin-t-10"  style="width:100%;float:none;"  :key="index" v-for="(item,index) in serverlists">
+                    <li class="clearfix"  :key="index" v-for="(item,index) in serverlists">
                        <img class="fl sever-img" src="./images/eyes-img3.png"/>
                        <div class="server-con">{{item.server_content}}</div>
                    </li>
@@ -102,7 +101,7 @@
                 <div class="send-info">
                     <el-form :model="serverForms" :rules="rules"  ref="serverForms" style="width:70% !important;float:left;"  class="register-style margin-t-10" label-width="70px">
                         <el-form-item label="咨询"  prop="content">
-                            <el-input type="text" v-model="serverForms.content" :placeholder="content">发送</el-input>
+                            <el-input type="password" v-model="serverForms.content" :placeholder="content">发送</el-input>
                         </el-form-item>
                     </el-form>
                     <span class="server-send skin-bto-hover margin-t-10" @click="sendserver('serverForms')">发送</span>
@@ -144,39 +143,6 @@ export default {
         }
     },
     methods: {
-        load () {
-            this.count += 2
-        },
-        cartClose (done) {
-            this.$confirm('确定关闭购物车吗？')
-                .then(_ => {
-                    done()
-                })
-                .catch(_ => {})
-        },
-        serverClose (done) {
-            this.$confirm('确定关闭客服会话吗？')
-                .then(_ => {
-                    done()
-                })
-                .catch(_ => {})
-        },
-        closedsever () {
-        },
-        // opencart () {
-        //     let servicecon = document.querySelector('.slide-servicecon')
-        //     let cartcon = document.querySelector('.slide-shopcon')
-        //     console.log(cartcon)
-        //     cartcon.style.display = 'block'
-        //     servicecon.style.display = 'none'
-        // },
-        // openservice () {
-        //     let servicecon = document.querySelector('.slide-servicecon')
-        //     let cartcon = document.querySelector('.slide-shopcon')
-        //     console.log(servicecon)
-        //     servicecon.style.display = 'block'
-        //     cartcon.style.display = 'none'
-        // },
         returnTop () {
             let returetop = document.body.scrollTop || document.documentElement.scrollTop
             var time = setInterval(function () {
@@ -206,7 +172,6 @@ export default {
                     }).then((res) => {
                         console.log(res)
                         if (res.data.status === 200) {
-                            this.serverForms.content.val = ''
                             this.$message({
                                 message: '信息发送成功',
                                 center: true,

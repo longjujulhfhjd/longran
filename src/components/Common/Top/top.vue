@@ -34,6 +34,20 @@ export default {
         return {
 
         }
+    },
+    methods: {
+        getscrool () {
+            let navTop = document.querySelector('.longran-Top')
+            var scrollTop = document.body.scrollTop || document.documentElement.scrollTop
+            if (scrollTop > 0) {
+                navTop.classList.add('on')
+            } else {
+                navTop.classList.remove('on')
+            }
+        }
+    },
+    mounted () {
+        window.addEventListener('scroll', this.getscrool)
     }
 }
 </script>

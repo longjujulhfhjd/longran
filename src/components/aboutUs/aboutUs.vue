@@ -6,13 +6,14 @@
         <p class="padding-10 padding-l-20 font-18 text-red text-weight"><span class="el-icon-location-outline"></span>贵州省纳雍县阳光星城大唐果酒店上行30米(复制地址点击搜索)</p>
         <a href="https://map.baidu.com/mobile/webapp/index/index/" class="serch-about skin-bto-hover">搜索</a>
         <div class="leave-message clearfix">
+            <p class="font-14 padding-20">如果你想装修可以找我们，留下你的信息。</p>
             <p class="font-18 padding-l-10">请留言:</p>
-            <p class="margin-tb-20 maybe-like text-c text-red" style="position:relative;"><span class="xiantiao"></span><span class="text-red icontent font-18 ">给我们的建议与意见 <i class="font-18 text-red icon-jianyishu iconfont"></i></span></p>
+            <p class="margin-tb-20 maybe-like text-c text-red" style="position:relative;"><span class="xiantiao"></span><span class="text-red icontent font-18 ">给我们的留言 <i class="font-18 text-red icon-jianyishu iconfont"></i></span></p>
             <el-form :model="ruleForm"  ref='ruleForm'  :rules="rules"  class="register-style" :label-position="labelPosition" label-width="100px">
-                <el-form-item label="邮箱" prop="email">
+                <el-form-item label="常用邮箱" prop="email">
                     <el-input type="text" v-model="ruleForm.email" :placeholder="email"></el-input>
                 </el-form-item>
-                <el-form-item label="电话" prop="tel">
+                <el-form-item label="常用联系电话" prop="tel">
                     <el-input type="text" v-model="ruleForm.tel" :placeholder="tel"></el-input>
                 </el-form-item>
                 <el-form-item label="内容" prop="info">
@@ -39,9 +40,6 @@ import {
     regTel
 } from './js/reg.js'
 export default {
-    props: {
-        change: Function
-    },
     data () {
         var Email = (rule, value, callback) => {
             if (!value) {
@@ -105,9 +103,10 @@ export default {
         // 提交留言
         submitmessage (forname) {
             this.$refs[forname].validate((valid) => {
-                this.loding = !this.loding
                 if (valid) {
+                    let id = JSON.parse(window.localStorage.getItem('userinfo')).id
                     let data = {
+                        id: id,
                         email: this.ruleForm.email,
                         tel: this.ruleForm.tel,
                         info: this.ruleForm.info
@@ -145,7 +144,6 @@ export default {
                     // this.loding = !this.loding
                     return false
                 }
-
                 return setTimeout(() => {
                     this.$store.dispatch('getmessage')
                 }, 1000)
