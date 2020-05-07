@@ -9,7 +9,10 @@
             <p class="font-14 padding-20">如果你想装修可以找我们，留下你的信息。</p>
             <p class="font-18 padding-l-10">请留言:</p>
             <p class="margin-tb-20 maybe-like text-c text-red" style="position:relative;"><span class="xiantiao"></span><span class="text-red icontent font-18 ">给我们的留言 <i class="font-18 text-red icon-jianyishu iconfont"></i></span></p>
-            <el-form :model="ruleForm"  ref='ruleForm'  :rules="rules"  class="register-style" :label-position="labelPosition" label-width="100px">
+            <el-form :model="ruleForm"  ref='ruleForm'  :rules="rules"  class="register-style" :label-position="labelPosition" label-width="150px">
+                <el-form-item label="姓名" prop="name">
+                    <el-input type="text" v-model="ruleForm.name" :placeholder="name"></el-input>
+                </el-form-item>
                 <el-form-item label="常用邮箱" prop="email">
                     <el-input type="text" v-model="ruleForm.email" :placeholder="email"></el-input>
                 </el-form-item>
@@ -66,16 +69,25 @@ export default {
                 callback()
             }
         }
+        var Name = (rule, value, callback) => {
+            if (value === '') {
+                callback(new Error('姓名不能为空！'))
+            } else {
+                callback()
+            }
+        }
         return {
             loding: false,
             email: '请输入邮箱',
             tel: '请输入电话号码',
             info: '请输入留言内容',
+            name: '请填写你的真实姓名',
             labelPosition: 'right',
             ruleForm: {
                 email: '',
                 tel: '',
-                info: ''
+                info: '',
+                name: ''
             },
             rules: {
                 email: [{
@@ -90,6 +102,11 @@ export default {
                 }],
                 info: [{
                     validator: Info,
+                    required: true,
+                    trigger: 'blur'
+                }],
+                name: [{
+                    validator: Name,
                     required: true,
                     trigger: 'blur'
                 }]
@@ -109,7 +126,8 @@ export default {
                         id: id,
                         email: this.ruleForm.email,
                         tel: this.ruleForm.tel,
-                        info: this.ruleForm.info
+                        info: this.ruleForm.info,
+                        name: this.ruleForm.name
                     }
                     axios({
                         url: 'http://127.0.0.1:3000/sendmessage',

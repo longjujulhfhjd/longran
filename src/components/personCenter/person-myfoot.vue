@@ -1,5 +1,8 @@
 <template>
     <div>
+        <p class="person-title padding-b-10">
+            <span class="padding-10 title-con" style="border-bottom:1px solid #D61B52;">我的足迹</span>
+        </p>
         <ul v-infinite-scroll  class="listshop-list text-c clearfix"  style="height:500px;overflow:auto">
             <li class="listshop-lists">
                 <img class="listshop-image padding-10" src='./image/wallcloth-4.jpg' />

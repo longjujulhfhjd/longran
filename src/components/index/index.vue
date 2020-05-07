@@ -5,6 +5,17 @@
                 <img :src='item'/>
             </el-carousel-item>
         </el-carousel>
+         <!-- 店面咨询 -->
+        <p class="news-bigtitle margin-tb-30 font-18 text-red"><span class="icon-xinwen iconfont padding-r-10 font-20"></span> 商品活动咨询</p>
+        <ul class="news-list" v-infinite-scroll style="height:500px;overflow:auto">
+            <li class="news-lists clearfix text-ellipsis" style="height:60px;line-height:60px;"  :key="index" v-for="(item,index) in newslist">
+                <span class="text-l text-ellipsis" style="width:25%;display: inline-block;line-height:60px;">{{item.news_title}}</span>
+                <span class="text-l text-ellipsis" title="点击查看活动详情" style="width:43%;display: inline-block; "  @click="newsdetail(item.news_id)"><router-link to='/newsdetail' >{{item.news_detail}}</router-link></span>
+                <span class="text-l text-ellipsis time-news" style="width:15%;display: inline-block;">{{item.news_starttim|dateformat('YYYY-MM-DD HH:mm:ss')}}</span>
+                <span class=" text-ellipsis" style="display: inline-block;">-</span>
+                <span class="text-r text-ellipsis time-news" style="width:15%;display: inline-block;">{{item.news_endtime|dateformat('YYYY-MM-DD HH:mm:ss')}}</span>
+            </li>
+        </ul>
         <!-- tab切换 -->
         <div class="change margin-30-top  content clearfix text-l">
             <div class="change-title-list font-18 clearfix  tab-box">
@@ -160,7 +171,7 @@
                 </ul>
             </div>
         </div>
-         <!-- 限时秒杀 -->
+        <!-- 限时秒杀 -->
         <div class="seckill margin-t-50">
             <div class="seckill-time color-white fl text-c">
                 <div class="font-28">龙冉秒杀</div>
@@ -205,34 +216,16 @@
                 </ul>
            </div>
         </div>
-        <!-- 店面咨询 -->
-        <p class="news-bigtitle margin-tb-30 font-18"><span class="icon-xinwen iconfont padding-r-10 font-20"></span> 新闻咨询</p>
-        <el-table
-            :data="tableData"
-            height="500"
-            style="width: 100%">
-             <el-table-column
-                class="news-title"
-                prop="title"
-                label="活动主题"
-                width="1000px">
-                </el-table-column>
-                <el-table-column
-                prop="date"
-                label="开始时间"
-                width="300px">
-                </el-table-column>
-        </el-table>
         <!-- 墙衣 -->
         <p class="font-36 text-c padding-tb-20">墙衣</p>
         <div class='banner2'>
             <el-carousel :interval="4000" type="card">
-                <el-carousel-item v-for="item in bannerImg" :key="item.g_id">
+                <el-carousel-item v-for="(item,index) in qiangyilist" :key="index">
                     <div class='skin-content-box'>
-                        <img :src='item'/>
-                        <p class="padding-t-10">无缝墙纸</p>
-                        <p  class="padding-t-10">￥560元/平方米</p>
-                        <p  class="skin-bto-hover margin-t-10">立即购买</p>
+                        <img :src="'http://127.0.0.1:3000/'+ item.goods_img"/>
+                        <p class="padding-t-10">{{item.goods_name}}</p>
+                        <p  class="padding-t-10">￥{{item.goods_price}}元/平方米</p>
+                         <router-link  to='/attribute'><p class="skin-bto-hover margin-t-10 "  @click="getgoodsdetail(item.goods_id)">立即购买</p></router-link>
                     </div>
                 </el-carousel-item>
             </el-carousel>
@@ -241,12 +234,12 @@
         <p class="font-36 text-c padding-tb-20">墙纸</p>
         <div class='banner2'>
             <el-carousel :interval="4000" type="card">
-                <el-carousel-item v-for="item in bannerImg" :key="item.g_id">
+                <el-carousel-item v-for="(item,index) in qiangzhilist" :key="index">
                     <div class='skin-content-box'>
-                        <img :src='item'/>
-                        <p class="padding-t-10">无缝墙纸</p>
-                        <p  class="padding-t-10">￥560元/平方米</p>
-                        <router-link class="skin-bto-hover margin-t-10" to='/detail'> 立即购买</router-link>
+                        <img :src="'http://127.0.0.1:3000/'+ item.goods_img"/>
+                        <p class="padding-t-10">{{item.goods_name}}</p>
+                        <p  class="padding-t-10">￥{{item.goods_price}}元/平方米</p>
+                         <router-link  to='/attribute'><p class="skin-bto-hover margin-t-10 "  @click="getgoodsdetail(item.goods_id)">立即购买</p></router-link>
                     </div>
                 </el-carousel-item>
             </el-carousel>
@@ -255,12 +248,12 @@
         <p class="font-36 text-c padding-tb-20">墙画</p>
         <div class='banner2'>
             <el-carousel :interval="4000" type="card">
-                <el-carousel-item v-for="item in bannerImg" :key="item.g_id">
+                <el-carousel-item v-for="(item,index) in qianghualist" :key="index">
                     <div class='skin-content-box'>
-                        <img :src='item'/>
-                        <p class="padding-t-10">无缝墙画</p>
-                        <p  class="padding-t-10">￥560元/平方米</p>
-                        <router-link class="skin-bto-hover margin-t-10" to='/detail'> 立即购买</router-link>
+                        <img :src="'http://127.0.0.1:3000/'+ item.goods_img"/>
+                        <p class="padding-t-10">{{item.goods_name}}</p>
+                        <p  class="padding-t-10">￥{{item.goods_price}}元/平方米</p>
+                         <router-link  to='/attribute'><p class="skin-bto-hover margin-t-10 "  @click="getgoodsdetail(item.goods_id)">立即购买</p></router-link>
                     </div>
                 </el-carousel-item>
             </el-carousel>
@@ -269,12 +262,12 @@
         <p class="font-36 text-c padding-tb-20">墙布</p>
         <div class='banner2'>
             <el-carousel :interval="4000" type="card">
-                <el-carousel-item v-for="item in bannerImg" :key="item.g_id">
+                <el-carousel-item v-for="(item,index) in qiangbulist" :key="index">
                     <div class='skin-content-box'>
-                        <img :src='item'/>
-                        <p class="padding-t-10">无缝墙纸</p>
-                        <p  class="padding-t-10">￥560元/平方米</p>
-                        <p  class="skin-bto-hover margin-t-10">立即购买</p>
+                        <img :src="'http://127.0.0.1:3000/'+ item.goods_img"/>
+                        <p class="padding-t-10">{{item.goods_name}}</p>
+                        <p  class="padding-t-10">￥{{item.goods_price}}元/平方米</p>
+                         <router-link  to='/attribute'><p class="skin-bto-hover margin-t-10 "  @click="getgoodsdetail(item.goods_id)">立即购买</p></router-link>
                     </div>
                 </el-carousel-item>
             </el-carousel>
@@ -301,50 +294,18 @@ export default {
             banner1,
             banner2,
             banner3,
-            bannerImg: [banner1, banner2, banner3, banner4, banner5, banner6, banner7],
-            tableData: [{
-                date: '2016-05-03',
-                title: '上海市普陀区金沙江路 1518 弄'
-            }, {
-                date: '2016-05-02',
-                title: '上海市普陀区金沙江路 1518 弄'
-            }, {
-                date: '2016-05-04',
-                title: '上海市普陀区金沙江路 1518 弄'
-            }, {
-                date: '2016-05-01',
-                title: '上海市普陀区金沙江路 1518 弄'
-            }, {
-                date: '2016-05-08',
-                title: '上海市普陀区金沙江路 1518 弄'
-            }, {
-                date: '2016-05-02',
-                title: '上海市普陀区金沙江路 1518 弄'
-            }, {
-                date: '2016-05-04',
-                title: '上海市普陀区金沙江路 1518 弄'
-            }, {
-                date: '2016-05-01',
-                title: '上海市普陀区金沙江路 1518 弄'
-            }, {
-                date: '2016-05-08',
-                title: '上海市普陀区金沙江路 1518 弄'
-            }, {
-                date: '2016-05-06',
-                title: '上海市普陀区金沙江路 1518 弄'
-            }, {
-                date: '2016-05-07',
-                title: '上海市普陀区金沙江路 1518 弄'
-            }]
+            bannerImg: [banner1, banner2, banner3, banner4, banner5, banner6, banner7]
         }
     },
-    mounted () {
-        this.tabchange()
-        return setTimeout(() => {
-            this.isLogin()
-        }, 5000)
-    },
     methods: {
+        // 商品详情
+        getgoodsdetail (id) {
+            this.$store.dispatch('getgoodsdetail', id)
+        },
+        // 公告详情
+        newsdetail (id) {
+            this.$store.dispatch('newsdetail', id)
+        },
         // 验证是否登录
         isLogin () {
             let token = window.localStorage.getItem('token')
@@ -368,6 +329,35 @@ export default {
                     tablists[this.index].classList.add('active')
                 }
             }
+        }
+    },
+    mounted () {
+        this.$store.dispatch('getnewsinfo')
+        this.$store.dispatch('qiangyi')
+        this.$store.dispatch('qiangzhi')
+        this.$store.dispatch('qianghua')
+        this.$store.dispatch('qiangbu')
+        this.tabchange()
+        return setTimeout(() => {
+            this.$store.dispatch('getnewsinfo')
+            this.isLogin()
+        }, 5000)
+    },
+    computed: {
+        newslist () {
+            return this.$store.state.shouye.newslist
+        },
+        qiangyilist () {
+            return this.$store.state.shouye.qiangyilist
+        },
+        qiangbulist () {
+            return this.$store.state.shouye.qiangbulist
+        },
+        qianghualist () {
+            return this.$store.state.shouye.qianghualist
+        },
+        qiangzhilist () {
+            return this.$store.state.shouye.qiangzhilist
         }
     }
 }

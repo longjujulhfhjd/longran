@@ -3,7 +3,8 @@
         <p class="text-green font-18"><i class="el-icon-circle-check"></i>评价成功</p>
         <p class="margin-t-20">
             <router-link to='/'><span class="skin-bto-hover">返回首页</span></router-link>
-            <router-link to='/seeappraise'><span class="skin-bto-hover margin-l-20">查看评价</span></router-link>
+            <router-link to='/personCenter/allappraise'><span class="skin-bto-hover margin-l-20">查看评价</span></router-link>
+            <router-link to='/personCenter/personappraise'><span class="skin-bto-hover margin-l-20">继续评价</span></router-link>
         </p>
     </div>
 </template>

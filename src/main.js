@@ -2,6 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
+import axios from 'axios'
 import router from './router'
 import store from './store'
 import ElementUI from 'element-ui'
@@ -15,9 +16,18 @@ import Swiper from 'swiper'
 import 'swiper/css/swiper.min.css'
 import vRegion from 'v-region'
 import moment from 'moment'
+import VDistpicker from 'v-distpicker'
 Vue.filter('dateformat', function (dataStr, pattern = 'YYYY-MM-DD HH:mm:ss') {
     return moment(dataStr).format(pattern)
 })
+Vue.prototype.axiosRequest = function (config) {
+    let axiosRequest = axios.create({
+        baseURL: 'http://127.0.0.1:3000',
+        timeout: 1000
+    })
+    return axiosRequest(config)
+}
+Vue.component('v-distpicker', VDistpicker)
 Vue.use(vRegion)
 Vue.config.productionTip = false
 Vue.prototype.$md5 = md5

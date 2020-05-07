@@ -27,7 +27,7 @@
             </el-form-item>
         </el-form>
         <p class="text-c text-red">*请妥善保管账户密码信息，勿随意泄露,手机号为识别及验证账户身份的唯一依据</p>
-        <div class="margin-auto register-box ">
+        <div class="margin-auto register-box">
             <p class="font-28 register-btn  text-c"  @click="sendregister('registerForms')" >注册</p>
             <router-link skin-bto class="fr" to="/login">
                 去登录?

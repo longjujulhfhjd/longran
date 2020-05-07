@@ -1,7 +1,7 @@
 <template>
     <div id="app" >
-        <Top></Top>
-        <router-view></router-view>
+        <Top ></Top>
+        <router-view ></router-view>
         <Bottoms></Bottoms>
         <Slide></Slide>
     </div>
@@ -20,11 +20,15 @@ export default {
     },
     data () {
         return {
+            num: ''
         }
     },
     methods: {
     },
     mounted () {
+        // window.addEventListener('beforeunload', e => {
+        //     window.localStorage.removeItem('token')
+        // })
     }
 }
 </script>

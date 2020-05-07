@@ -1,6 +1,6 @@
 <template>
     <div>
-        <p class="recived-title">我已收到货，同意支付宝付款</p>
+        <p class="recived-title">我已收到货</p>
         <p class="padding-20">订单信息</p>
         <ul class="shop-titlelist clearfix">
             <li class="shop-titlelsists shop-name-scale">宝贝</li>

@@ -2,9 +2,9 @@
     <div class="padding-20">
         <div class="margin-tb-20 maybe-like text-c text-red" style="position:relative;"><span class="xiantiao"></span><span class="text-red icontent font-18 "> 我的收藏夹 <i class="font-18 text-red icon-iconset0166 iconfont"></i></span></div>
         <ul class="listshop-list text-c  clearfix">
-            <li class="listshop-lists">
+            <li class="listshop-lists" v-for="(item, index) in collectlists" :key="index">
                 <img class="listshop-image padding-10" :src='classImg' />
-                <p class="margin-t-10 text-ellipsis padding-lr-10 padding-tb-5">商品名称商品名称商品名称商品名称商品名称</p>
+                <p class="margin-t-10 text-ellipsis padding-lr-10 padding-tb-5">{{item.collect_id}}</p>
                 <p class="margin-t-10 font-12"><span class="text-red font-20">￥320</span> 元 / 平方米</p>
                 <div class="list-cover"></div>
                 <router-link to='/cart'><p class="listshop-btn listjoin-cart">加入购物车</p></router-link>
@@ -25,6 +25,10 @@ export default {
             classImg,
             banner1
         }
+    },
+    mounted () {
+    },
+    computed: {
     }
 }
 </script>

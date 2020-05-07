@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Index from 'components/index/index.vue'
+import Newsdetail from 'components/newsdetail/newsdetail.vue'
 import AboutUs from 'components/aboutUs/aboutUs.vue'
 import Search from 'components/search/search.vue'
 import PersonCenter from 'components/personCenter/personCenter.vue'
@@ -11,6 +12,7 @@ import Personmyfoot from 'components/personCenter/person-myfoot.vue'
 import Personcart from 'components/personCenter/person-cart.vue'
 import Personbought from 'components/personCenter/person-bought.vue'
 import Personunpaid from 'components/personCenter/person-unpaid.vue'
+import Personupdatepwd from 'components/personCenter/person-updatepwd.vue'
 import Edit from 'components/personCenter/edit.vue'
 import Personshipped from 'components/personCenter/person-shipped.vue'
 import Personreceived from 'components/personCenter/person-received.vue'
@@ -28,6 +30,7 @@ import Connection from 'components/connection/connection.vue'
 import Login from 'components/login/login.vue'
 import Register from 'components/register/register.vue'
 import Detail from 'components/detail/detail.vue'
+import Attribute from 'components/attribute/attribute.vue'
 import Account from 'components/account/account.vue'
 import Order from 'components/order/order.vue'
 import Ordered from 'components/order/ordered.vue'
@@ -79,6 +82,11 @@ export default new Router({
             path: '/updateadd',
             name: 'updateadd',
             component: Updateadd
+        }, {
+            // 新闻详情
+            path: '/newsdetail',
+            name: 'newsdetail',
+            component: Newsdetail
         },
         {
             // 去评价
@@ -238,6 +246,12 @@ export default new Router({
                 path: '/personCenter/allappraise',
                 name: 'allappraise',
                 component: Personallappraise
+            },
+            {
+                // 修改密码
+                path: '/personCenter/updatepwd',
+                name: 'updatepwd',
+                component: Personupdatepwd
             }]
         },
         {
@@ -299,9 +313,15 @@ export default new Router({
         },
         {
             // 详情
-            path: '/Detail',
+            path: '/detail',
             name: 'detail',
             component: Detail
+        },
+        {
+            // 商品属性选择
+            path: '/attribute',
+            name: 'attribute',
+            component: Attribute
         },
         {
             // 结算页

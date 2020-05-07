@@ -74,13 +74,16 @@ export default {
         // 用户登录
         tologin (formName) {
             this.$refs[formName].validate((valid) => {
+                // 验证表单
                 if (valid) {
-                    // 登录请求
+                    // 验证成功的操作
                     let data = {
                         email: this.loginFrom.email,
                         pwd: this.loginFrom.pwd
                     }
+                    // 登录请求
                     axios({
+                        // 登录接口
                         url: 'http://127.0.0.1:3000/login',
                         method: 'post',
                         params: {
@@ -88,30 +91,43 @@ export default {
                         }
                     }).then((res) => {
                         if (res.data.status === 200) {
+                            // 登录成功 跳转到个人中心 并将用户信息和token记录到本地
                             window.location.href = '/personCenter'
                             // 登录成功就将用户的信息存到userinfo 和token里
                             window.localStorage.setItem('userinfo', JSON.stringify(res.data.data.info))
                             window.localStorage.setItem('token', JSON.stringify(res.data.data.token))
                             this.$store.commit('changeInfo', res.data.data)
+                            // 登录成功提示信息
                             this.$message({
-                                // message: '登录成功！',
-                                message: '欢迎' + res.data.data.info.email,
+                                message: '欢迎' + res.data.data.info.name,
                                 center: true,
                                 type: 'success',
                                 duration: 2000
                             })
                         } else {
+                            // 登录失败提示信息
                             this.$message({
-                                message: '登录出错',
+                                message: '用户名或者密码错误',
                                 center: true,
                                 type: 'error',
                                 duration: 2000
                             })
                         }
                     })
+                } else {
+                    // 登录失败提示信息
+                    this.$message({
+                        message: '请输入用户名或者密码',
+                        center: true,
+                        type: 'error',
+                        duration: 2000
+                    })
                 }
             })
         }
+    },
+    mounted () {
+        this.$forceUpdate()
     }
 }
 </script>

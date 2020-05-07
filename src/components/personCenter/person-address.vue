@@ -1,63 +1,58 @@
 <template>
     <div>
-        <p class="text-red"><span class="el-icon-circle-plus padding-r-10"></span>添加我的收货地址</p>
+        <p class="person-title">
+            <span class="padding-10 title-con" style="border-bottom:1px solid #D61B52;">我的收货地址</span>
+        </p>
+        <p class="text-red padding-t-10"><span class="el-icon-circle-plus padding-r-10"></span>添加我的收货地址</p>
         <div class="margin-t-20">
-            <el-form :model="registerForms"  :rules="rules"  class="register-style" :label-position="labelPosition" label-width="100px">
-                <el-form-item label="地址信息" prop="area">
-                    <el-input type="text" v-model="registerForms.area" :placeholder="area"></el-input>
+            <el-form :model="addressForms" ref="addressForms"  :rules="rules"  class="register-style" :label-position="labelPosition" label-width="100px">
+                <el-form-item label="区域信息" >
+                    <v-distpicker  @selected="onSelected"></v-distpicker>
                 </el-form-item>
-                <el-form-item label="请输入详细地址" prop="detail">
-                    <el-input type="textarea" v-model="registerForms.detail" :placeholder="detail"></el-input>
+                <el-form-item label="详细地址" prop="detail">
+                    <el-input type="textarea" v-model="addressForms.detail"  :placeholder="detail"></el-input>
                 </el-form-item>
                  <el-form-item label="邮政编码" prop="postcode">
-                    <el-input  type="text" v-model="registerForms.postcode" :placeholder="postcode"></el-input>
-                </el-form-item>
-                <el-form-item label="邮箱" prop="email">
-                    <el-input type="text" v-model="registerForms.email" :placeholder="email"></el-input>
+                    <el-input  type="text" v-model="addressForms.postcode" :placeholder="postcode"></el-input>
                 </el-form-item>
                 <el-form-item label="收货人姓名" prop="name">
-                    <el-input type="text" v-model="registerForms.name" :placeholder="name"></el-input>
+                    <el-input type="text" v-model="addressForms.name" :placeholder="name"></el-input>
                 </el-form-item>
                 <el-form-item label="电话" prop="tel">
-                    <el-input type="text" v-model="registerForms.tel" name="tel" :placeholder="tel"></el-input>
+                    <el-input type="text" v-model="addressForms.tel" name="tel" :placeholder="tel"></el-input>
                 </el-form-item>
             </el-form>
-             <el-button class="skin-bto-hover margin-l-30" type="text" @click="open"> 保存 </el-button>
+             <el-button class="skin-bto-hover margin-l-30" type="text" @click="sendaddress('addressForms')"> 保存 </el-button>
         </div>
         <p class="font-6 padding-tb-30">已有收货地址</p>
-        <el-table :data="tableData" class="text-c" height="500" style="width: 100%">
-            <el-table-column class="news-title"  prop="name" label="收货人"  width="100px"> </el-table-column>
-            <el-table-column  prop="area" label="所在地区"  width="300px"> </el-table-column>
-            <el-table-column  prop="detail" label="详细地址"  width="200px"> </el-table-column>
-            <el-table-column  prop="code" label="邮编"  width="80px"> </el-table-column>
-            <el-table-column label="操作"  width="100px">
-                <span class="hand">编辑</span>
-                <span class="hand">删除</span>
-            </el-table-column>
-            <el-table-column label="收货默认地址"  width="150px">
-             <el-button class="hand begin-set" type="text" @click="opens"> 设为默认 </el-button>
-                <span class="seted button">默认地址</span>
-            </el-table-column>
-        </el-table>
+        <ul class="address-title-list">
+            <li class="address-title-lists" style="width:10%;">收货人</li>
+            <li class="address-title-lists" style="width:24%;">所在地区</li>
+            <li class="address-title-lists" style="width:20%;">详细地址</li>
+            <li class="address-title-lists" style="width:20%;">电话号码</li>
+            <li class="address-title-lists" style="width:12%;">邮编</li>
+            <li class="address-title-lists" style="width:14%;">操作</li>
+        </ul>
+        <ul class="address-list">
+            <li class="address-list-li clearfix" :key="item.user_id" v-for="(item) in addresslist">
+                <p class="address-lists" style="width:10%;">{{item.address_name}}</p>
+                <p class="address-lists" style="width:24%;">{{item.address_area}}</p>
+                <p class="address-lists" style="width:20%;">{{item.address_add}}</p>
+                <p class="address-lists" style="width:20%;">{{item.address_tel}}</p>
+                <p class="address-lists" style="width:12%;">{{item.address_postcode}}</p>
+                <p class="address-lists" style="width:14%;"><span @click="deletes(item.address_id)" class="hand" >删除</span></p>
+            </li>
+        </ul>
     </div>
 </template>
 
 <script>
 import {
-    regEmail,
     regTel
 } from './js/reg'
+import axios from 'axios'
 export default {
     data () {
-        var Email = (rule, value, callback) => {
-            if (!value) {
-                callback(new Error('请输入邮箱'))
-            } else if (!regEmail.test(value)) {
-                callback(new Error('邮箱格式不正确'))
-            } else {
-                callback()
-            }
-        }
         var Tel = (rule, value, callback) => {
             if (!value) {
                 callback(new Error('请输入电话号码'))
@@ -76,58 +71,39 @@ export default {
         }
         var Area = (rule, value, callback) => {
             if (value === '') {
-                callback(new Error('详细地址不能为空'))
+                callback(new Error('所在地区不能为空'))
             } else {
                 callback()
             }
         }
         var Postcode = (rule, value, callback) => {
             if (value === '') {
-                callback(new Error('详细地址不能为空'))
+                callback(new Error('邮政编码不能为空'))
             } else {
                 callback()
             }
         }
         var Name = (rule, value, callback) => {
             if (value === '') {
-                callback(new Error('详细地址不能为空'))
+                callback(new Error('收件人不能为空'))
             } else {
                 callback()
             }
         }
         return {
-            email: '请输入邮箱',
             tel: '请输入电话号码',
-            detail: '请输入详细地址',
+            detail: '请输入街道和详细地址',
             area: '请选择省/市/区',
             postcode: '请输入邮政编码',
             name: '请输入收货人姓名',
             labelPosition: 'right',
-            registerForms: {
-                email: '',
+            addressForms: {
+                name: '',
                 tel: '',
-                info: ''
+                postcode: '',
+                detail: ''
             },
-            tableData: [{
-                name: '龙菊',
-                area: '贵州省 毕节市 七星关区 麻园街道',
-                detail: '贵州工程应用技术学院',
-                code: '551700',
-                tel: '18286792321'
-            },
-            {
-                name: '龙菊',
-                area: '贵州省 毕节市 七星关区 麻园街道',
-                detail: '30米大道三江依山雅苑',
-                code: '551700',
-                tel: '18286792321'
-            }],
             rules: {
-                email: [{
-                    validator: Email,
-                    required: true,
-                    trigger: 'blur'
-                }],
                 tel: [{
                     validator: Tel,
                     required: true,
@@ -157,41 +133,112 @@ export default {
         }
     },
     methods: {
-        open () {
-            this.$confirm('是否确认增加该条收货地址？', '确认信息', {
+        onSelected (data) {
+            this.$store.state.personcenter.citydata = data.province.value + data.city.value + data.area.value
+        },
+        // 删除收货地址
+        deletes (id) {
+            // this.$store.dispatch('deleteaddress', id)
+            this.$confirm('是否删除该地址？', '确认信息', {
                 distinguishCancelAndClose: true,
-                confirmButtonText: '添加',
+                confirmButtonText: '删除',
                 cancelButtonText: '取消'
             }).then(() => {
-                this.$message({
-                    type: 'info',
-                    message: '添加成功'
-                })
-            }).catch(action => {
-                this.$message({
-                    type: 'info',
-                    message: action === 'cancel'
-                        ? '已取消添加' : '停留在当前页面'
+                axios({
+                    method: 'get',
+                    params: {
+                        id: id
+                    },
+                    url: 'http://127.0.0.1:3000/deleteaddress'
+                }).then((res) => {
+                    if (res.data.status === 200) {
+                        // aa.commit('getaddressList', res.data.data)
+                        let id = JSON.parse(window.localStorage.getItem('userinfo')).id
+                        this.$store.dispatch('getaddress', id)
+                        this.$message({
+                            message: '删除地址成功',
+                            center: true,
+                            type: 'success',
+                            duration: 2000
+                        })
+                    } else {
+                        this.$message({
+                            message: '删除地址失败',
+                            center: true,
+                            type: 'error',
+                            duration: 2000
+                        })
+                    }
                 })
             })
         },
-        opens () {
-            this.$confirm('是否确认设置为默认地址？', '确认信息', {
+        // 添加地址信息
+        sendaddress (forname) {
+            this.$confirm('是否确认添加该地址？', '确认信息', {
                 distinguishCancelAndClose: true,
                 confirmButtonText: '添加',
                 cancelButtonText: '取消'
             }).then(() => {
-                this.$message({
-                    type: 'info',
-                    message: '设置成功'
-                })
-            }).catch(action => {
-                this.$message({
-                    type: 'info',
-                    message: action === 'cancel'
-                        ? '放弃设置为默认收货地址' : '停留在当前页面'
+                this.$refs[forname].validate((valid) => {
+                    if (valid) {
+                        let id = JSON.parse(window.localStorage.getItem('userinfo')).id
+                        let area = this.$store.state.personcenter.citydata
+                        console.log(this.addressForms.detail)
+                        let data = {
+                            id: id,
+                            area: area,
+                            name: this.addressForms.name,
+                            add: this.addressForms.detail,
+                            tel: this.addressForms.tel,
+                            postcode: this.addressForms.postcode
+                        }
+                        axios({
+                            url: 'http://127.0.0.1:3000/sendaddress',
+                            method: 'post',
+                            params: {
+                                data
+                            }
+                        }).then((res) => {
+                            if (res.data.status === 200) {
+                                this.$message({
+                                    message: '添加地址成功',
+                                    center: true,
+                                    type: 'success',
+                                    duration: 2000
+                                })
+                            } else {
+                                this.$message({
+                                    message: '添加留言失败',
+                                    center: true,
+                                    type: 'error',
+                                    duration: 2000
+                                })
+                            }
+                        })
+                    } else {
+                        this.$message({
+                            message: '请把表单信息填写完整！',
+                            center: true,
+                            type: 'error',
+                            duration: 2000
+                        })
+                        return false
+                    }
+                    return setTimeout(() => {
+                        let id = JSON.parse(window.localStorage.getItem('userinfo')).id
+                        this.$store.dispatch('getaddress', id)
+                    }, 1000)
                 })
             })
+        }
+    },
+    mounted () {
+        let id = JSON.parse(window.localStorage.getItem('userinfo')).id
+        this.$store.dispatch('getaddress', id)
+    },
+    computed: {
+        addresslist () {
+            return this.$store.state.personcenter.addresslist
         }
     }
 }

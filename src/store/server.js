@@ -8,10 +8,13 @@ let mutations = {
     }
 }
 let actions = {
-    getserver (aa) {
+    qtgetserver (aa, id) {
         axios({
+            params: {
+                id: id
+            },
             method: 'get',
-            url: 'http://127.0.0.1:3000/getserver'
+            url: 'http://127.0.0.1:3000/qtgetserver'
         }).then(function (res) {
             console.log(res)
             aa.commit('getserverList', res.data.data)

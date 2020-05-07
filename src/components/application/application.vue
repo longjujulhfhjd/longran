@@ -16,6 +16,9 @@
         <img style="height:500px; width:700px;" src="./image/api.png"/>
         <p class="padding-20">有意向的向我们预留个人联系，方便我们安排面试</p>
         <el-form :rules="rules"  ref='applicationruleForm'  :model="applicationruleForm" label-width="80px">
+            <el-form-item label="姓名" prop="name">
+                <el-input type="text" v-model="applicationruleForm.name" :placeholder="name"></el-input>
+            </el-form-item>
             <el-form-item label="邮箱"  prop="email">
                 <el-input type="text" v-model="applicationruleForm.email" :placeholder="email" ></el-input>
             </el-form-item>
@@ -60,11 +63,19 @@ export default {
                 callback()
             }
         }
+        var Name = (rule, value, callback) => {
+            if (value === '') {
+                callback(new Error('姓名不能为空！'))
+            } else {
+                callback()
+            }
+        }
         return {
             email: '请输入邮箱',
             tel: '请输入你的电话号码',
             detail: '请输入与该工作相关的近几年你的大体工作情况',
             labelPosition: 'right',
+            name: '请填写你的真实姓名',
             applicationruleForm: {
                 email: '',
                 tel: '',
@@ -78,6 +89,11 @@ export default {
                 }],
                 tel: [{
                     validator: Tel,
+                    required: true,
+                    trigger: 'blur'
+                }],
+                name: [{
+                    validator: Name,
                     required: true,
                     trigger: 'blur'
                 }],
@@ -101,7 +117,8 @@ export default {
                         id: id,
                         email: this.applicationruleForm.email,
                         tel: this.applicationruleForm.tel,
-                        info: this.applicationruleForm.info
+                        name: this.applicationruleForm.name,
+                        detail: this.applicationruleForm.detail
                     }
                     axios({
                         url: 'http://127.0.0.1:3000/sendapplication',
